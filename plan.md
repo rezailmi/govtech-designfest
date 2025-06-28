@@ -144,9 +144,6 @@ govtech-designfest/
 6. **Phase 6**: Testing, accessibility audit, and performance optimization
 
 ## Future Enhancements
-- User registration and authentication
 - Personal agenda builder
 - Push notifications for session reminders
-- Interactive venue maps
-- Live session feedback and Q&A
 - Social sharing capabilities 
