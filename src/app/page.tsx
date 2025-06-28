@@ -9,15 +9,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 px-6" style={{backgroundColor: '#70094E'}}>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-40">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{backgroundColor: '#70094E'}}>
+        {/* Background Hero Illustration */}
+        <div className="absolute inset-0">
           <Image 
-            src="/assets/icons/illustrations/hero-logo.svg" 
-            alt="GovTech Design Festival Hero Background" 
-            width={800}
-            height={600}
-            className="max-w-full max-h-full w-auto h-auto"
+            src="/assets/icons/illustrations/hero-illustration.png" 
+            alt="GovTech Design Festival Hero Illustration" 
+            fill
+            className="object-contain"
             priority
           />
         </div>
@@ -38,36 +37,60 @@ export default function Home() {
         <div className="absolute top-8 right-8 flex items-center space-x-8 text-white">
           <a href="#keynotes" className="hover:text-pink-300 transition-colors">Keynotes</a>
           <a href="#agenda" className="hover:text-pink-300 transition-colors">Agenda</a>
-          <a href="#people" className="hover:text-pink-300 transition-colors flex items-center">
-            people <span className="ml-1">↗</span>
+          <a href="#people" className="hover:text-pink-300 transition-colors flex items-center" target="_blank" rel="noopener noreferrer">
+            People 
+            <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
           </a>
-          <a href="#register" className="hover:text-pink-300 transition-colors flex items-center">
-            Register <span className="ml-1">↗</span>
-          </a>
+          <Button asChild className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-lg font-semibold">
+            <a href="#register" className="flex items-center" target="_blank" rel="noopener noreferrer">
+              Register
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </Button>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          {/* Festival Stickers - moved to bottom */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-6">
+        {/* Festival Stickers - positioned at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
+          <div className="flex justify-center items-center gap-4 lg:gap-8">
             {/* Date Sticker */}
-            <div className="bg-yellow-400 text-black px-6 py-3 rounded-lg transform -rotate-12 font-bold text-xl border-2 border-black shadow-lg">
-              1-31 JULY
+            <div className="relative">
+              <div className="bg-white text-black px-6 py-3 lg:px-10 lg:py-5 rounded-2xl transform -rotate-6 font-black text-2xl lg:text-3xl shadow-xl">
+                1-31 JULY
+              </div>
+              <div className="absolute top-0 left-0 -z-10 w-full h-full bg-pink-300 rounded-2xl transform -rotate-6 translate-x-1 translate-y-1"></div>
             </div>
             
             {/* Year Sticker */}
-            <div className="bg-cyan-400 text-black px-8 py-4 rounded-lg transform rotate-6 font-bold text-2xl border-2 border-black shadow-lg">
-              2025
+            <div className="relative">
+              <div className="bg-[#6CB4EE] text-black px-10 py-5 lg:px-16 lg:py-8 rounded-3xl transform rotate-3 font-black text-4xl lg:text-6xl shadow-xl">
+                2025
+              </div>
+              <div className="absolute -top-2 -right-2 text-white">
+                <svg className="w-8 h-8 lg:w-12 lg:h-12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L14.09 8.26L20.93 8.91L16.11 13.17L17.53 19.93L12 16.47L6.47 19.93L7.89 13.17L3.07 8.91L9.91 8.26L12 2Z"/>
+                </svg>
+              </div>
             </div>
             
             {/* For Everyone By Designers Sticker */}
-            <div className="bg-green-400 text-black px-4 py-2 rounded-lg transform -rotate-3 font-bold text-sm border-2 border-black shadow-lg">
-              <div className="text-xs">FOR</div>
-              <div className="text-lg">EVERYONE</div>
-              <div className="text-xs">BY DESIGNERS</div>
+            <div className="relative">
+              <div className="bg-[#6CB4EE] text-black px-6 py-4 lg:px-8 lg:py-6 rounded-2xl transform -rotate-3 font-black shadow-xl">
+                <div className="text-sm lg:text-base">FOR</div>
+                <div className="text-2xl lg:text-3xl -my-1">EVERYONE</div>
+                <div className="text-sm lg:text-base">BY</div>
+                <div className="text-xl lg:text-2xl">DESIGNERS</div>
+              </div>
+              <div className="absolute -bottom-2 -left-2 text-white transform rotate-12">
+                <svg className="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <path d="M13 2L3 14l9 2 2 9 10-12-9-2-2-9z"/>
+                </svg>
+              </div>
             </div>
           </div>
-
-
         </div>
       </section>
 
