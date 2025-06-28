@@ -3,165 +3,347 @@
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState } from "react"
+import Image from "next/image"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-white py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            {/* Lightning bolt icon */}
-            <div className="text-6xl mb-6">⚡</div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 px-6" style={{backgroundColor: '#70094E'}}>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-40">
+          <Image 
+            src="/assets/icons/illustrations/hero-logo.svg" 
+            alt="GovTech Design Festival Hero Background" 
+            width={800}
+            height={600}
+            className="max-w-full max-h-full w-auto h-auto"
+            priority
+          />
+        </div>
+        
+        {/* GovTech Logo - Top Left */}
+        <div className="absolute top-8 left-8">
+          <Image 
+            src="/assets/icons/logos/gdf-logo.svg" 
+            alt="GovTech Design Festival" 
+            width={120}
+            height={48}
+            className="h-12 w-auto"
+            priority
+          />
+        </div>
+
+        {/* Navigation - Top Right */}
+        <div className="absolute top-8 right-8 flex items-center space-x-8 text-white">
+          <a href="#keynotes" className="hover:text-pink-300 transition-colors">Keynotes</a>
+          <a href="#agenda" className="hover:text-pink-300 transition-colors">Agenda</a>
+          <a href="#people" className="hover:text-pink-300 transition-colors flex items-center">
+            people <span className="ml-1">↗</span>
+          </a>
+          <a href="#register" className="hover:text-pink-300 transition-colors flex items-center">
+            Register <span className="ml-1">↗</span>
+          </a>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          {/* Festival Stickers - moved to bottom */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-6">
+            {/* Date Sticker */}
+            <div className="bg-yellow-400 text-black px-6 py-3 rounded-lg transform -rotate-12 font-bold text-xl border-2 border-black shadow-lg">
+              1-31 JULY
+            </div>
             
-            {/* Main Title */}
-            <h1 className="text-[8rem] lg:text-[12rem] font-bold leading-none tracking-tight mb-8">
-              GovTech
-            </h1>
-            <h2 className="text-5xl lg:text-6xl font-bold leading-tight mb-8">
-              Design Festival 2025
-            </h2>
+            {/* Year Sticker */}
+            <div className="bg-cyan-400 text-black px-8 py-4 rounded-lg transform rotate-6 font-bold text-2xl border-2 border-black shadow-lg">
+              2025
+            </div>
+            
+            {/* For Everyone By Designers Sticker */}
+            <div className="bg-green-400 text-black px-4 py-2 rounded-lg transform -rotate-3 font-bold text-sm border-2 border-black shadow-lg">
+              <div className="text-xs">FOR</div>
+              <div className="text-lg">EVERYONE</div>
+              <div className="text-xs">BY DESIGNERS</div>
+            </div>
           </div>
-          
-          {/* Call to action buttons */}
-          <div className="text-center space-y-4">
-            <div className="bg-purple-100 p-6 rounded-lg max-w-2xl mx-auto">
-              <p className="text-lg mb-4">💡 Join our <strong>Festival Slack Channel</strong> for latest announcements and updates 🤩</p>
-              <p className="text-lg mb-4">🎯 <strong>Register now</strong> to save your spot!</p>
-              <p className="text-lg">Looking for the <strong>full event calendar</strong>? Click here! 👈</p>
+
+
+        </div>
+      </section>
+
+      {/* CTA Cards */}
+      <section className="bg-gray-50 py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Slack Channel Card */}
+            <div className="bg-[#CCFF66] rounded-2xl p-8 lg:p-12">
+              <div className="max-w-lg">
+                <p className="text-lg mb-4 font-medium">💬 Stay Connected</p>
+                <h3 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+                  Join our Festival Slack Channel
+                </h3>
+                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-lg font-semibold">
+                  Join Slack Channel
+                </Button>
+              </div>
+            </div>
+
+            {/* Registration Card */}
+            <div className="bg-purple-500 rounded-2xl p-8 lg:p-12 text-white">
+              <div className="max-w-lg">
+                <p className="text-lg mb-4 font-medium">🎯 Registration</p>
+                <h3 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+                  Register now to save your spot!
+                </h3>
+                <Button className="bg-white text-purple-500 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+                  Register Now
+                </Button>
+              </div>
+            </div>
+
+            {/* View Agenda Card */}
+            <div className="bg-blue-500 rounded-2xl p-8 lg:p-12 text-white">
+              <div className="max-w-lg">
+                <p className="text-lg mb-4 font-medium">📅 Full Schedule</p>
+                <h3 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+                  View full event agenda
+                </h3>
+                <Button className="bg-white text-blue-500 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+                  View Agenda
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Tagline Section */}
-      <section className="bg-[#CCFF66] py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-5xl lg:text-6xl font-bold leading-tight">
-            Join Singapore's premier design festival bringing together government designers, developers, and innovators.
-          </h3>
-        </div>
-      </section>
-
-      {/* Featured Keynotes Section */}
-      <section className="bg-white py-24 px-6">
+      {/* Featured Speakers Section */}
+      <section className="bg-black text-white py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center mb-8">
-            <div className="text-3xl mr-4">⭐</div>
-            <h2 className="text-4xl lg:text-5xl font-bold">Featured Keynotes</h2>
-          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-16">Keynote</h2>
           
-          <p className="text-xl text-gray-600 mb-16 max-w-4xl">
-            Explore sessions from people shaping the future of government innovation and design
-          </p>
-
-          {/* Featured Keynote Speakers Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {/* Featured Speakers List */}
+          <div className="space-y-8">
             
-            {/* Opening Address & Keynote */}
-            <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg p-6 text-white">
-              <div className="aspect-square bg-white/20 rounded-lg mb-4 flex items-center justify-center">
-                <div className="text-4xl">🎤</div>
-              </div>
-              <div className="mb-4">
-                <span className="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold">Keynote</span>
-              </div>
-              <h3 className="font-bold text-lg mb-4">Opening Address & Design Innovation Keynote</h3>
-              <div className="space-y-2">
-                <div className="font-semibold">DGE Sau Sheong</div>
-                <div className="text-sm opacity-90">Deputy Government Engineer</div>
-                <div className="text-sm opacity-90">GovTech Singapore</div>
-                <div className="font-semibold mt-3">Shiao-Yin Kuik</div>
-                <div className="text-sm opacity-90">Design Director</div>
-                <div className="text-sm opacity-90">GovTech Singapore</div>
-              </div>
-            </div>
-
-            {/* Government Design Strategy */}
-            <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg p-6 text-white">
-              <div className="aspect-square bg-white/20 rounded-lg mb-4 flex items-center justify-center">
-                <div className="text-4xl">🏛️</div>
-              </div>
-              <div className="mb-4">
-                <span className="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold">Keynote</span>
-                <span className="bg-orange-500 px-3 py-1 rounded-full text-xs font-semibold ml-2">Strategy</span>
-              </div>
-              <h3 className="font-bold text-lg mb-4">From Policy to Impact: Design's Role in Government</h3>
-              <div className="space-y-2">
-                <div className="font-semibold">2PS Augustin</div>
-                <div className="text-sm opacity-90">Second Permanent Secretary</div>
-                <div className="text-sm opacity-90">Smart Nation Group</div>
-                <div className="font-semibold mt-3">Lillian Shieh</div>
-                <div className="text-sm opacity-90">Director, Design</div>
-                <div className="text-sm opacity-90">GovTech Singapore</div>
-              </div>
-            </div>
-
-            {/* Design Systems & Innovation */}
-            <div className="bg-gradient-to-br from-teal-500 to-green-500 rounded-lg p-6 text-white">
-              <div className="aspect-square bg-white/20 rounded-lg mb-4 flex items-center justify-center">
-                <div className="text-4xl">🎨</div>
-              </div>
-              <div className="mb-4">
-                <span className="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold">Keynote</span>
-                <span className="bg-blue-500 px-3 py-1 rounded-full text-xs font-semibold ml-2">Design Systems</span>
-              </div>
-              <h3 className="font-bold text-lg mb-4">Building Design Systems for Government Scale</h3>
-              <div className="space-y-2">
-                <div className="font-semibold">Ruby Pryor</div>
-                <div className="text-sm opacity-90">Senior Design Researcher</div>
-                <div className="text-sm opacity-90">GovTech Singapore</div>
+            {/* Keynote 1 - Opening Address & Design Innovation */}
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="flex flex-col lg:flex-row">
+                {/* Left side - Session Info */}
+                <div className="flex-1 p-8 lg:p-12">
+                  <div className="text-gray-600 text-sm mb-4">Jul 1, 2025 10:30 AM - 11:30 AM PDT | Main Stage: Opening ceremony</div>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Opening Address & Design Innovation Keynote</h3>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
+                    <span className="bg-gray-200 px-4 py-2 rounded-full text-sm font-semibold text-black">OPENING</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                      Join
+                    </button>
+                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                      View details
+                    </button>
+                  </div>
+                </div>
+                {/* Right side - Speakers */}
+                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">DGE Sau Sheong</h4>
+                      <p className="text-sm text-black/80">Deputy Government Engineer</p>
+                      <p className="text-sm text-black/80">GovTech Singapore</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">Shiao-Yin Kuik</h4>
+                      <p className="text-sm text-black/80">Design Director</p>
+                      <p className="text-sm text-black/80">GovTech Singapore</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Inclusive Design */}
-            <div className="bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg p-6 text-white">
-              <div className="aspect-square bg-white/20 rounded-lg mb-4 flex items-center justify-center">
-                <div className="text-4xl">♿</div>
-              </div>
-              <div className="mb-4">
-                <span className="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold">Keynote</span>
-                <span className="bg-purple-600 px-3 py-1 rounded-full text-xs font-semibold ml-2">Accessibility</span>
-              </div>
-              <h3 className="font-bold text-lg mb-4">Designing Inclusive Government Services</h3>
-              <div className="space-y-2">
-                <div className="font-semibold">Dr Douglas O'Loughlin</div>
-                <div className="text-sm opacity-90">Accessibility Expert</div>
-                <div className="text-sm opacity-90">International Consultant</div>
+            {/* Keynote 2 - Government Design Strategy */}
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="flex flex-col lg:flex-row">
+                <div className="flex-1 p-8 lg:p-12">
+                  <div className="text-gray-600 text-sm mb-4">Jul 7, 2025 11:30 AM - 12:30 PM PDT | Main Stage: Policy meets design</div>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">From Policy to Impact: Design&apos;s Role in Government</h3>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
+                    <span className="bg-orange-200 px-4 py-2 rounded-full text-sm font-semibold text-black">STRATEGY</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                      Join
+                    </button>
+                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                      View details
+                    </button>
+                  </div>
+                </div>
+                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">2PS Augustin</h4>
+                      <p className="text-sm text-black/80">Second Permanent Secretary</p>
+                      <p className="text-sm text-black/80">Smart Nation Group</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">Lillian Shieh</h4>
+                      <p className="text-sm text-black/80">Director, Design</p>
+                      <p className="text-sm text-black/80">GovTech Singapore</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Digital Transformation */}
-            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg p-6 text-white">
-              <div className="aspect-square bg-white/20 rounded-lg mb-4 flex items-center justify-center">
-                <div className="text-4xl">🚀</div>
-              </div>
-              <div className="mb-4">
-                <span className="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold">Keynote</span>
-                <span className="bg-blue-600 px-3 py-1 rounded-full text-xs font-semibold ml-2">Digital Transformation</span>
-              </div>
-              <h3 className="font-bold text-lg mb-4">Digital-First Government: The Singapore Story</h3>
-              <div className="space-y-2">
-                <div className="font-semibold">MOS Jasmin Bernard</div>
-                <div className="text-sm opacity-90">Minister of State</div>
-                <div className="text-sm opacity-90">Ministry of Communications</div>
+            {/* Keynote 3 - Design Systems */}
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="flex flex-col lg:flex-row">
+                <div className="flex-1 p-8 lg:p-12">
+                  <div className="text-gray-600 text-sm mb-4">Jul 14, 2025 2:00 PM - 3:00 PM PDT | Design Stage: Building at scale</div>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Building Design Systems for Government Scale</h3>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
+                    <span className="bg-blue-200 px-4 py-2 rounded-full text-sm font-semibold text-black">DESIGN SYSTEMS</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                      Join
+                    </button>
+                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                      View details
+                    </button>
+                  </div>
+                </div>
+                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
+                  <div className="flex justify-center">
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">Ruby Pryor</h4>
+                      <p className="text-sm text-black/80">Senior Design Researcher</p>
+                      <p className="text-sm text-black/80">GovTech Singapore</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* User Research */}
-            <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-lg p-6 text-white">
-              <div className="aspect-square bg-white/20 rounded-lg mb-4 flex items-center justify-center">
-                <div className="text-4xl">🔍</div>
+            {/* Keynote 4 - Inclusive Design */}
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="flex flex-col lg:flex-row">
+                <div className="flex-1 p-8 lg:p-12">
+                  <div className="text-gray-600 text-sm mb-4">Jul 14, 2025 12:00 PM - 1:00 PM PDT | Accessibility Stage: Inclusive design</div>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Designing Inclusive Government Services</h3>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
+                    <span className="bg-purple-200 px-4 py-2 rounded-full text-sm font-semibold text-black">ACCESSIBILITY</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                      Join
+                    </button>
+                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                      View details
+                    </button>
+                  </div>
+                </div>
+                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
+                  <div className="flex justify-center">
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">Dr Douglas O&apos;Loughlin</h4>
+                      <p className="text-sm text-black/80">Accessibility Expert</p>
+                      <p className="text-sm text-black/80">International Consultant</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="mb-4">
-                <span className="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold">Keynote</span>
-                <span className="bg-yellow-600 px-3 py-1 rounded-full text-xs font-semibold ml-2">Research</span>
+            </div>
+
+            {/* Keynote 5 - Digital Transformation */}
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="flex flex-col lg:flex-row">
+                <div className="flex-1 p-8 lg:p-12">
+                  <div className="text-gray-600 text-sm mb-4">Jul 21, 2025 3:00 PM - 4:00 PM PDT | Innovation Stage: Digital government</div>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Digital-First Government: The Singapore Story</h3>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
+                    <span className="bg-blue-300 px-4 py-2 rounded-full text-sm font-semibold text-black">DIGITAL TRANSFORMATION</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                      Join
+                    </button>
+                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                      View details
+                    </button>
+                  </div>
+                </div>
+                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
+                  <div className="flex justify-center">
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">MOS Jasmin Bernard</h4>
+                      <p className="text-sm text-black/80">Minister of State</p>
+                      <p className="text-sm text-black/80">Ministry of Communications</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-bold text-lg mb-4">Understanding Citizens: Research in Government</h3>
-              <div className="space-y-2">
-                <div className="font-semibold">Senior UX Researcher</div>
-                <div className="text-sm opacity-90">Central UX Team</div>
-                <div className="text-sm opacity-90">GovTech Singapore</div>
+            </div>
+
+            {/* Keynote 6 - User Research */}
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="flex flex-col lg:flex-row">
+                <div className="flex-1 p-8 lg:p-12">
+                  <div className="text-gray-600 text-sm mb-4">Jul 28, 2025 1:00 PM - 2:00 PM PDT | Research Stage: Understanding citizens</div>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Understanding Citizens: Research in Government</h3>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
+                    <span className="bg-yellow-200 px-4 py-2 rounded-full text-sm font-semibold text-black">RESEARCH</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                      Join
+                    </button>
+                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                      View details
+                    </button>
+                  </div>
+                </div>
+                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
+                  <div className="flex justify-center">
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div className="text-2xl text-black/60">👤</div>
+                      </div>
+                      <h4 className="font-bold text-lg text-black">Senior UX Researcher</h4>
+                      <p className="text-sm text-black/80">Central UX Team</p>
+                      <p className="text-sm text-black/80">GovTech Singapore</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -171,80 +353,43 @@ export default function Home() {
       {/* Full Agenda Section */}
       <AgendaSection />
 
-      {/* Why Attend Section */}
+      {/* Why attend Govtech design festival Section */}
       <section className="bg-white py-24 px-6 border-t">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-xl font-medium mb-16">Why attend Design Festival</h3>
+          <h3 className="text-4xl lg:text-5xl font-bold mb-8">Why attend Govtech design festival</h3>
+          <p className="text-xl text-gray-600 mb-16 max-w-4xl">
+            Embark on a learning adventure through three exciting tracks:
+          </p>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-            {/* Learn from Leaders */}
+            {/* Inner Compass (Self) */}
             <div>
-              <h4 className="text-2xl font-bold mb-6">Learn from Government Leaders</h4>
+              <h4 className="text-2xl font-bold mb-6">Inner Compass (Self)</h4>
               <p className="text-gray-700 leading-relaxed">
-                Hear directly from senior government officials, design leaders, and policy makers
-                about the future of design in government and public service innovation.
+                Build habits, mindsets, and resources to excel as designers, teammates, and change agents
               </p>
             </div>
 
-            {/* Connect with Community */}
+            {/* Journey Kits (Craft) */}
             <div>
-              <h4 className="text-2xl font-bold mb-6">Connect with Design Community</h4>
+              <h4 className="text-2xl font-bold mb-6">Journey Kits (Craft)</h4>
               <p className="text-gray-700 leading-relaxed">
-                Network with designers, developers, and innovators working across government
-                agencies. Share experiences and learn from diverse perspectives in public service design.
+                Adopt innovative practices and tools to improve quality and maintain relevance
               </p>
             </div>
 
-            {/* Practical Insights */}
+            {/* Impact Stories */}
             <div>
-              <h4 className="text-2xl font-bold mb-6">Gain Practical Insights</h4>
+              <h4 className="text-2xl font-bold mb-6">Impact Stories</h4>
               <p className="text-gray-700 leading-relaxed">
-                Take away actionable strategies for designing inclusive, accessible, and impactful
-                government services that truly serve citizens' needs.
+                Learn from real successes that created tangible impact for stakeholders
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Bottom Sections */}
-      <section className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Slack Channel */}
-        <div className="bg-[#CCFF66] p-12 lg:p-16">
-          <div className="max-w-lg">
-            <p className="text-lg mb-4 font-medium">💬 Stay Connected</p>
-            <h3 className="text-4xl font-bold mb-6 leading-tight">
-              Join our Festival Slack Channel
-            </h3>
-            <p className="text-lg mb-8 leading-relaxed">
-              Get the latest announcements, updates, and connect with
-              fellow attendees. Join our community for real-time discussions
-              and networking opportunities.
-            </p>
-            <Button className="bg-black text-white hover:bg-gray-800">
-              Join Slack Channel
-            </Button>
-          </div>
-        </div>
 
-        {/* Registration */}
-        <div className="bg-purple-500 p-12 lg:p-16 text-white">
-          <div className="max-w-lg">
-            <p className="text-lg mb-4 font-medium">🎯 Registration</p>
-            <h3 className="text-4xl font-bold mb-6 leading-tight">
-              Register now to save your spot!
-            </h3>
-            <p className="text-lg mb-8 leading-relaxed">
-              Don't miss out on Singapore's premier design festival.
-              Secure your place at keynotes, workshops, and networking
-              sessions with government design leaders.
-            </p>
-            <Button className="bg-white text-purple-500 hover:bg-gray-100">
-              Register Now
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
@@ -298,7 +443,7 @@ function AgendaSection() {
       date: 'Jul 3, 2025',
       day: 'Thursday',
       time: '11:30 AM',
-      title: 'Fireside chat: Why isn\'t empathy enough?',
+      title: 'Fireside chat: Why isn&apos;t empathy enough?',
       theme: 'Keynote',
       topics: ['Talk'],
       speakers: [
@@ -404,7 +549,7 @@ function AgendaSection() {
       date: 'Jul 9, 2025',
       day: 'Wednesday',
       time: '12:00 PM',
-      title: 'Just Trying My Best: A Designer\'s Journey into Accessibility',
+      title: 'Just Trying My Best: A Designer&apos;s Journey into Accessibility',
       theme: 'Design craft',
       topics: ['Online', 'Talk', '12 PM', 'Build Self'],
       speakers: [
@@ -601,7 +746,7 @@ function AgendaSection() {
       date: 'Jul 15, 2025',
       day: 'Tuesday',
       time: '1:00 PM',
-      title: 'Growing with GovTech: A UX Designer\'s Story of Learning, Leadin...',
+      title: 'Growing with GovTech: A UX Designer&apos;s Story of Learning, Leadin...',
       theme: 'Design craft',
       topics: ['Online', 'Talk', '1 PM', 'Build Self'],
       speakers: [

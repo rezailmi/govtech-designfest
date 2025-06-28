@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { TopNavigation } from "@/components/navigation/top-navigation"
 import { Footer } from "@/components/navigation/footer"
 
 export const metadata: Metadata = {
@@ -16,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="light">
       <body className="min-h-screen bg-white font-sans antialiased">
-        <TopNavigation />
         {children}
         <Footer />
       </body>
