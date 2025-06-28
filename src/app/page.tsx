@@ -2,15 +2,103 @@
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Image from "next/image"
-import { Sparkle, Zap } from "lucide-react"
+
+// Draggable Sticker Component
+function DraggableSticker({ 
+  children, 
+  initialX, 
+  initialY, 
+  className = "",
+  style = {},
+  onPositionChange
+}: {
+  children: React.ReactNode
+  initialX: number
+  initialY: number
+  className?: string
+  style?: React.CSSProperties
+  onPositionChange?: (x: number, y: number) => void
+}) {
+  const [position, setPosition] = useState({ x: initialX, y: initialY })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
+  const stickerRef = useRef<HTMLDivElement>(null)
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true)
+    setDragStart({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y
+    })
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return
+    
+    const newX = e.clientX - dragStart.x
+    const newY = e.clientY - dragStart.y
+    
+    setPosition({ x: newX, y: newY })
+    onPositionChange?.(newX, newY)
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0]
+    setIsDragging(true)
+    setDragStart({
+      x: touch.clientX - position.x,
+      y: touch.clientY - position.y
+    })
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return
+    
+    const touch = e.touches[0]
+    const newX = touch.clientX - dragStart.x
+    const newY = touch.clientY - dragStart.y
+    
+    setPosition({ x: newX, y: newY })
+    onPositionChange?.(newX, newY)
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
+  }
+
+  return (
+    <div
+      ref={stickerRef}
+      className={`absolute select-none ${isDragging ? 'cursor-grabbing z-50' : 'cursor-grab z-40'} ${className}`}
+      style={{
+        transform: `translate3d(${position.x}px, ${position.y}px, 0) ${isDragging ? 'scale(1.05)' : 'scale(1)'}`,
+        transition: isDragging ? 'none' : 'transform 0.2s ease-out',
+        ...style
+      }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {children}
+    </div>
+  )
+}
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{backgroundColor: '#70094E'}}>
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden" style={{backgroundColor: '#70094E'}}>
         {/* Background Hero Illustration */}
         <div className="absolute inset-0">
           <Image 
@@ -22,81 +110,100 @@ export default function Home() {
           />
         </div>
         
-        {/* GovTech Logo - Top Left */}
-        <div className="absolute top-8 left-8">
-          <Image 
-            src="/assets/icons/logos/gdf-logo.svg" 
-            alt="GovTech Design Festival" 
-            width={120}
-            height={48}
-            className="h-12 w-auto"
-            priority
-          />
-        </div>
-
-        {/* Navigation - Top Right */}
-        <div className="absolute top-8 right-8 flex items-center space-x-8 text-white">
-          <a href="#keynotes" className="hover:text-pink-300 transition-colors">Keynotes</a>
-          <a href="#agenda" className="hover:text-pink-300 transition-colors">Agenda</a>
-          <a href="#people" className="hover:text-pink-300 transition-colors flex items-center" target="_blank" rel="noopener noreferrer">
-            People 
-            <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-          <Button asChild className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-lg font-semibold">
-            <a href="#register" className="flex items-center" target="_blank" rel="noopener noreferrer">
-              Register
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          </Button>
-        </div>
-
-        {/* Festival Stickers - positioned at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
-          <div className="flex justify-center items-center gap-2 lg:gap-4">
-            {/* Date Sticker */}
-            <div className="relative">
-              <div className="bg-white text-black px-3 py-2 lg:px-4 lg:py-2 rounded-xl transform -rotate-6 font-black text-sm lg:text-base shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
-                1-31 JULY
-              </div>
-              <div className="absolute top-0 left-0 -z-10 w-full h-full bg-pink-300 rounded-xl transform -rotate-6 translate-x-0.5 translate-y-0.5"></div>
-            </div>
+        {/* Header Container */}
+        <div className="absolute top-0 left-0 right-0 p-4 md:p-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             
-            {/* Year Sticker */}
-            <div className="relative">
-              <div className="bg-[#6CB4EE] text-black px-4 py-2 lg:px-6 lg:py-3 rounded-2xl transform rotate-3 font-black text-xl lg:text-2xl shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
-                2025
-              </div>
-              <div className="absolute -top-3 -right-3">
-                <div className="relative">
-                  <Sparkle className="absolute w-9 h-9 lg:w-12 lg:h-12 text-white fill-white" style={{filter: 'blur(1px)'}} />
-                  <Sparkle className="absolute w-9 h-9 lg:w-12 lg:h-12 text-white fill-white" style={{transform: 'scale(1.3)'}} />
-                  <Sparkle className="relative w-9 h-9 lg:w-12 lg:h-12 text-black fill-black" />
-                </div>
-              </div>
+            {/* GovTech Logo */}
+            <div className="flex justify-center md:justify-start">
+              <Image 
+                src="/assets/icons/logos/gdf-logo.svg" 
+                alt="GovTech Design Festival" 
+                width={120}
+                height={48}
+                className="h-10 md:h-12 w-auto"
+                priority
+              />
             </div>
-            
-            {/* For Everyone By Designers Sticker */}
-            <div className="relative">
-              <div className="bg-[#6CB4EE] text-black px-2 py-1 lg:px-3 lg:py-2 rounded-lg transform -rotate-3 font-black shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
-                <div className="text-[8px] lg:text-xs font-bold leading-tight">FOR</div>
-                <div className="text-xs lg:text-sm font-black leading-none -my-0.5">EVERYONE</div>
-                <div className="text-[8px] lg:text-xs font-bold leading-tight">BY</div>
-                <div className="text-[8px] lg:text-xs font-bold leading-none">DESIGNERS</div>
-              </div>
-              <div className="absolute -bottom-3 -left-3 transform rotate-12">
-                <div className="relative">
-                  <Zap className="absolute w-6 h-6 lg:w-9 lg:h-9 text-white fill-white" style={{filter: 'blur(1px)'}} />
-                  <Zap className="absolute w-6 h-6 lg:w-9 lg:h-9 text-white fill-white" style={{transform: 'scale(1.3)'}} />
-                  <Zap className="relative w-6 h-6 lg:w-9 lg:h-9 text-black fill-black" />
-                </div>
-              </div>
+
+            {/* Navigation */}
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-end gap-3 sm:gap-4 md:gap-8 text-white">
+              <a href="#keynotes" className="hover:text-pink-300 transition-colors">Keynotes</a>
+              <a href="#agenda" className="hover:text-pink-300 transition-colors">Agenda</a>
+              <a href="#people" className="hover:text-pink-300 transition-colors flex items-center" target="_blank" rel="noopener noreferrer">
+                People 
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <Button asChild className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-lg font-semibold">
+                <a href="#register" className="flex items-center" target="_blank" rel="noopener noreferrer">
+                  Register
+                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </Button>
             </div>
           </div>
         </div>
+
+        {/* Draggable Festival Stickers */}
+        
+        {/* Date Sticker */}
+        <DraggableSticker initialX={-12} initialY={177}>
+          <div className="relative">
+            <div className="bg-white text-black px-4 py-3 lg:px-6 lg:py-4 rounded-xl transform -rotate-6 font-black text-base lg:text-lg shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
+              1-31 JULY
+            </div>
+            <div className="absolute top-0 left-0 -z-10 w-full h-full bg-pink-300 rounded-xl transform -rotate-6 translate-x-2 translate-y-2"></div>
+          </div>
+        </DraggableSticker>
+        
+        {/* Year Sticker */}
+        <DraggableSticker initialX={-63} initialY={225}>
+          <div className="bg-[#2563EB] text-white px-4 py-2 lg:px-6 lg:py-3 rounded-2xl transform rotate-3 font-black text-xl lg:text-2xl shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
+            2025
+          </div>
+        </DraggableSticker>
+        
+        {/* For Everyone By Designers Sticker */}
+        <DraggableSticker initialX={66} initialY={227}>
+          <div className="bg-[#6CB4EE] text-black px-2 py-1 lg:px-3 lg:py-2 rounded-lg transform -rotate-3 font-black shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
+            <div className="text-[6px] lg:text-[10px] font-semibold leading-normal">FOR</div>
+            <div className="text-xs lg:text-sm font-black leading-snug">EVERYONE</div>
+            <div className="text-[6px] lg:text-[10px] font-semibold leading-normal">BY</div>
+            <div className="text-xs lg:text-sm font-black leading-snug">DESIGNERS</div>
+          </div>
+        </DraggableSticker>
+
+        {/* Draggable Star Icon */}
+        <DraggableSticker initialX={99} initialY={178}>
+          <div className="w-9 h-9 lg:w-12 lg:h-12 transform rotate-12">
+            <Image
+              src="/assets/icons/star-1.svg"
+              alt="Star Icon"
+              width={48}
+              height={48}
+              className="w-full h-full pointer-events-none"
+              draggable={false}
+            />
+          </div>
+        </DraggableSticker>
+
+        {/* Draggable Lightning Icon */}
+        <DraggableSticker initialX={-121} initialY={246}>
+          <div className="w-9 h-9 lg:w-12 lg:h-12 transform rotate-12">
+            <Image
+              src="/assets/icons/zap-1.svg"
+              alt="Lightning Icon"
+              width={48}
+              height={48}
+              className="w-full h-full pointer-events-none"
+              draggable={false}
+            />
+          </div>
+        </DraggableSticker>
       </section>
 
       {/* CTA Cards */}
