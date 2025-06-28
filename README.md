@@ -1,6 +1,6 @@
-# GovTech DesignFest
+# GovTech Design Festival - Event App
 
-A modern web application built with **Next.js 15**, **Tailwind CSS v4**, and **shadcn/ui** components. This project demonstrates the latest in web development technologies with a focus on performance, accessibility, and developer experience.
+A modern event application built with **Next.js 15**, **Tailwind CSS v4**, and **shadcn/ui** components. This app showcases event information, keynote speakers, and detailed agenda in a clean, accessible interface designed for event attendees to explore and plan their participation.
 
 ## 🚀 Tech Stack
 
@@ -13,11 +13,18 @@ A modern web application built with **Next.js 15**, **Tailwind CSS v4**, and **s
 
 ## ✨ Features
 
+### Event App Functionality
+- 🏠 **Event Overview**: Comprehensive event information with key details and highlights
+- 🎤 **Keynote Speakers**: Detailed speaker profiles with bios, session information, and social links
+- 📅 **Event Agenda**: Interactive timeline with session details, speakers, and venue information
+- 🧭 **Navigation**: Clean top navigation bar (Home, Speakers, Agenda)
+
+### Technical Features
 - 🎨 **Modern Design**: Clean, responsive UI with beautiful components
 - 🌙 **Dark Mode Ready**: CSS variables-based theming system
 - ♿ **Accessible**: Built with accessibility in mind using Radix UI primitives
 - 🚀 **Performance**: Optimized build with Next.js 15 and Tailwind CSS v4
-- 📱 **Responsive**: Mobile-first design that works on all devices
+- 📱 **Mobile-First**: Responsive design that works perfectly on all devices
 - 🔧 **Developer Experience**: TypeScript, ESLint, and modern tooling
 - 🎯 **Production Ready**: Configured for deployment and scaling
 
@@ -57,16 +64,25 @@ govtech-designfest/
 │   ├── app/
 │   │   ├── globals.css          # Tailwind CSS v4 configuration
 │   │   ├── layout.tsx           # Root layout component
-│   │   └── page.tsx             # Home page
+│   │   ├── page.tsx             # Home page
+│   │   ├── speakers/            # Speakers page
+│   │   │   └── page.tsx
+│   │   └── agenda/              # Agenda page
+│   │       └── page.tsx
 │   ├── components/
-│   │   └── ui/                  # shadcn/ui components
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── badge.tsx
-│   │       └── ...
+│   │   ├── ui/                  # shadcn/ui components
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── badge.tsx
+│   │   │   └── ...
+│   │   ├── navigation/          # Navigation components
+│   │   ├── speakers/            # Speaker-related components
+│   │   ├── agenda/              # Agenda-related components
+│   │   └── event/               # Event information components
 │   └── lib/
 │       └── utils.ts             # Utility functions
 ├── public/                      # Static assets
+├── plan.md                      # Project plan and documentation
 ├── components.json              # shadcn/ui configuration
 ├── next.config.mjs             # Next.js configuration
 ├── package.json                # Dependencies and scripts
@@ -187,6 +203,19 @@ This project is ready to deploy to:
 
 This project is licensed under the MIT License.
 
+## 📋 Development Plan
+
+This project follows a structured development approach:
+
+1. **Phase 1**: Navigation structure and basic layouts
+2. **Phase 2**: Home page with event information
+3. **Phase 3**: Speakers page and components
+4. **Phase 4**: Agenda page with timeline functionality
+5. **Phase 5**: Responsive design and mobile optimization
+6. **Phase 6**: Testing, accessibility audit, and performance optimization
+
+For detailed planning information, see [plan.md](./plan.md).
+
 ---
 
-**Built with ❤️ for GovTech DesignFest** 
+**Built with ❤️ for GovTech DesignFest Event** 🎉 
