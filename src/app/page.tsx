@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState } from "react"
 
 export default function Home() {
@@ -250,7 +251,6 @@ export default function Home() {
 
 // Agenda Section Component
 function AgendaSection() {
-  const [selectedWeek, setSelectedWeek] = useState('week1')
 
   const agendaItems = [
     {
@@ -371,114 +371,506 @@ function AgendaSection() {
       ],
       location: 'In-Person'
     },
+    // Week 2: July 7-11, 2025
     {
       week: 'week2',
-      date: 'Jan 13-17, 2025',
-      day: 'Week 2',
-      time: '11:20AM – 12:00PM SGT',
-      title: 'From Policy to Impact: Design\'s Role in Government',
-      theme: 'Design craft',
-      topics: ['Strategy', 'Policy'],
+      date: 'Jul 7, 2025',
+      day: 'Monday',
+      time: '11:30 AM',
+      title: 'Fireside Chat with 2PS and Lillian Shieh',
+      theme: 'Keynote',
+      topics: ['In-Person', 'Keynote', 'Talk'],
       speakers: [
         { name: '2PS Augustin', role: 'Second Permanent Secretary', company: 'Smart Nation Group' },
         { name: 'Lillian Shieh', role: 'Director, Design', company: 'GovTech Singapore' }
       ],
-      location: 'MBC 10 L10 The Big Place'
+      location: 'In-Person'
     },
     {
       week: 'week2',
-      date: 'Jan 13-17, 2025',
-      day: 'Week 2',
-      time: '12:00PM – 12:20PM SGT',
-      title: 'User Research in Government: Understanding Citizens',
+      date: 'Jul 8, 2025',
+      day: 'Tuesday',
+      time: '9:30 AM',
+      title: 'Data Storytelling',
       theme: 'Design craft',
-      topics: ['UX Research', 'User-centered design'],
+      topics: ['In-Person', 'Course', 'Build Craft'],
+      speakers: [
+        { name: 'Kontinentalist', role: 'Data Storytelling Team', company: 'Kontinentalist' }
+      ],
+      location: 'In-Person'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 9, 2025',
+      day: 'Wednesday',
+      time: '12:00 PM',
+      title: 'Just Trying My Best: A Designer\'s Journey into Accessibility',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Build Self'],
+      speakers: [
+        { name: 'Liting Kway', role: 'UX Designer', company: 'Government Agency' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 10, 2025',
+      day: 'Thursday',
+      time: '12:00 PM',
+      title: 'Creating a digital engagement platform for the ONE...',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Brandon Tan', role: 'Digital Product Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 11, 2025',
+      day: 'Friday',
+      time: '9:00 AM',
+      title: 'Visual Facilitation Lab',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Course', 'Build Craft'],
+      speakers: [
+        { name: 'Art of Awakening', role: 'Visual Facilitation Team', company: 'Art of Awakening' }
+      ],
+      location: 'In-Person'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 9, 2025',
+      day: 'Wednesday',
+      time: '12:00 PM',
+      title: 'From Insights to Action: Driving Impact',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Keynote'],
       speakers: [
         { name: 'Ruby Pryor', role: 'Senior Design Researcher', company: 'GovTech Singapore' }
       ],
-      location: 'Online via SG-Teams'
+      location: 'Online'
     },
     {
-      week: 'week3',
-      date: 'Jan 20-24, 2025',
-      day: 'Week 3',
-      time: '1:30PM – 1:50PM SGT',
-      title: 'Designing for Accessibility in Government Services',
+      week: 'week2',
+      date: 'Jul 8, 2025',
+      day: 'Tuesday',
+      time: '1:00 PM',
+      title: 'Driving Product Strategy Through Research: From Paper Form...',
       theme: 'Design craft',
-      topics: ['Accessibility', 'Inclusive design'],
+      topics: ['Online', 'Talk', '1 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Alicia Chong', role: 'Product Strategist', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 10, 2025',
+      day: 'Thursday',
+      time: '1:00 PM',
+      title: 'Small hands, big barriers: Rethinking login for young learners',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '1 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Chong Ying Leong (Jordan)', role: 'UX Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 11, 2025',
+      day: 'Friday',
+      time: '12:00 PM',
+      title: 'How culture influences Design: A Tokyo case study',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Amanda Lu', role: 'Design Researcher', company: 'Independent' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 9, 2025',
+      day: 'Wednesday',
+      time: '1:00 PM',
+      title: 'Theming with design tokens: Flagship Design System',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '1 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Vivienne Chong', role: 'Design System Lead', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 11, 2025',
+      day: 'Friday',
+      time: '1:00 PM',
+      title: 'User design principles towards our Punggol Digital District...',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '1 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Alan Tan', role: 'Digital District Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week2',
+      date: 'Jul 11, 2025',
+      day: 'Friday',
+      time: '2:00 PM',
+      title: 'Design Your Life',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Got Food!', 'Workshop'],
+      speakers: [
+        { name: 'Design Thinking Community', role: 'Workshop Facilitators', company: 'Design Thinking Community' }
+      ],
+      location: 'In-Person'
+    },
+    
+    // Week 3: July 14-18, 2025
+    {
+      week: 'week3',
+      date: 'Jul 14, 2025',
+      day: 'Monday',
+      time: '12:00 PM',
+      title: 'Flourishing at All Levels of the System',
+      theme: 'Keynote',
+      topics: ['Online', 'Talk', '12 PM', 'Keynote'],
       speakers: [
         { name: 'Dr Douglas O\'Loughlin', role: 'Accessibility Expert', company: 'International Consultant' }
       ],
-      location: 'Hybrid Session'
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 15, 2025',
+      day: 'Tuesday',
+      time: '12:00 PM',
+      title: 'Journeys are not single-use plastics: A sustainable approach to...',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Darren Yeo', role: 'Sustainability Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 16, 2025',
+      day: 'Wednesday',
+      time: '12:00 PM',
+      title: 'An honest account: Using AI in design research',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Serah Lee', role: 'AI Research Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 17, 2025',
+      day: 'Thursday',
+      time: '12:00 PM',
+      title: 'Find my center- how our body, emotions & language shape th...',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Build Self'],
+      speakers: [
+        { name: 'Sarah Xu', role: 'Behavioral Designer', company: 'Independent' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 18, 2025',
+      day: 'Friday',
+      time: '12:00 PM',
+      title: 'How Are You, Really?',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Build Self'],
+      speakers: [
+        { name: 'Tay Jia Enn', role: 'Wellness Designer', company: 'Independent' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 15, 2025',
+      day: 'Tuesday',
+      time: '1:00 PM',
+      title: 'Growing with GovTech: A UX Designer\'s Story of Learning, Leadin...',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '1 PM', 'Build Self'],
+      speakers: [
+        { name: 'Eunice Chan', role: 'Senior UX Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 16, 2025',
+      day: 'Wednesday',
+      time: '1:00 PM',
+      title: 'From Blank Slate to Breakthroughs: Learning to Run Foc...',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '1 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Cathy Chen Sheng', role: 'UX Researcher', company: 'GovTech Singapore' },
+        { name: 'Matthew Ryan Lee', role: 'Product Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 17, 2025',
+      day: 'Thursday',
+      time: '1:00 PM',
+      title: 'Gatekeeping _______',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '1 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Jing Yen Goh', role: 'Design Strategist', company: 'GovTech Singapore' },
+        { name: 'Jaffry Jalal', role: 'Product Designer', company: 'GovTech Singapore' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 18, 2025',
+      day: 'Friday',
+      time: '1:00 PM',
+      title: 'Gamification on GPay',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '1 PM', 'Build Craft'],
+      speakers: [
+        { name: 'Chenxi Sun', role: 'Product Designer', company: 'Google Pay' },
+        { name: 'Peggy Sim', role: 'UX Designer', company: 'Google Pay' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week3',
+      date: 'Jul 15, 2025',
+      day: 'Tuesday',
+      time: '2:00 PM',
+      title: 'Insights That Matter',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Course', 'Build Craft'],
+      speakers: [
+        { name: 'Studio Dojo', role: 'Design Research Team', company: 'Studio Dojo' }
+      ],
+      location: 'In-Person'
+    },
+
+    // Week 4: July 21-25, 2025
+    {
+      week: 'week4',
+      date: 'Jul 21, 2025',
+      day: 'Monday',
+      time: '9:30 AM',
+      title: 'Learning Journey: DBS',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Service Design Week', 'Learning Journey'],
+      speakers: [
+        { name: 'Service Design Week', role: 'Learning Journey Host', company: 'DBS Bank' }
+      ],
+      location: 'In-Person'
     },
     {
       week: 'week4',
-      date: 'Jan 27-31, 2025',
-      day: 'Week 4',
-      time: '2:10PM – 2:30PM SGT',
-      title: 'Digital Transformation in Public Service',
+      date: 'Jul 22, 2025',
+      day: 'Tuesday',
+      time: '12:00 PM',
+      title: 'Lightning Talks: Public Officer Pack',
       theme: 'Design craft',
-      topics: ['Digital transformation', 'Service design'],
+      topics: ['Online', 'Talk', '12 PM', 'Service Design Week'],
       speakers: [
-        { name: 'MOS Jasmin Bernard', role: 'Minister of State', company: 'Ministry of Communications' }
+        { name: 'Service Design Week', role: 'Lightning Talk Speakers', company: 'Various Government Agencies' }
       ],
-      location: 'MBC 10 - Level 10 (The Big Place)'
+      location: 'Online'
+    },
+    {
+      week: 'week4',
+      date: 'Jul 23, 2025',
+      day: 'Wednesday',
+      time: '12:00 PM',
+      title: 'Lightning Talks: Business Track',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Service Design Week'],
+      speakers: [
+        { name: 'Service Design Week', role: 'Lightning Talk Speakers', company: 'Various Organizations' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week4',
+      date: 'Jul 24, 2025',
+      day: 'Thursday',
+      time: '9:30 AM',
+      title: 'Learning Journey: Mandai Wildlife Reserve',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Service Design Week', 'Learning Journey'],
+      speakers: [
+        { name: 'Service Design Week', role: 'Learning Journey Host', company: 'Mandai Wildlife Reserve' }
+      ],
+      location: 'In-Person'
+    },
+    {
+      week: 'week4',
+      date: 'Jul 25, 2025',
+      day: 'Friday',
+      time: '9:30 AM',
+      title: 'Learning Journey: IRAS',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Service Design Week', 'Learning Journey'],
+      speakers: [
+        { name: 'Service Design Week', role: 'Learning Journey Host', company: 'IRAS' }
+      ],
+      location: 'In-Person'
+    },
+    {
+      week: 'week4',
+      date: 'Jul 22, 2025',
+      day: 'Tuesday',
+      time: '2:00 PM',
+      title: 'Ctrl + Alt + Design Workshop',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Workshop', 'Build Craft'],
+      speakers: [
+        { name: 'Design Festival Team', role: 'Workshop Facilitators', company: 'GovTech Singapore' }
+      ],
+      location: 'In-Person'
+    },
+    {
+      week: 'week4',
+      date: 'Jul 24, 2025',
+      day: 'Thursday',
+      time: '12:00 PM',
+      title: 'Lightning Talks: Citizen Track',
+      theme: 'Design craft',
+      topics: ['Online', 'Talk', '12 PM', 'Service Design Week'],
+      speakers: [
+        { name: 'Service Design Week', role: 'Lightning Talk Speakers', company: 'Citizen Representatives' }
+      ],
+      location: 'Online'
+    },
+    {
+      week: 'week4',
+      date: 'Jul 25, 2025',
+      day: 'Friday',
+      time: '3:00 PM',
+      title: 'Learning Journey: Hilton',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Service Design Week', 'Learning Journey'],
+      speakers: [
+        { name: 'Service Design Week', role: 'Learning Journey Host', company: 'Hilton Hotels' }
+      ],
+      location: 'In-Person'
+    },
+
+    // Week 5: July 28-31, 2025
+    {
+      week: 'week5',
+      date: 'Jul 28, 2025',
+      day: 'Monday',
+      time: '9:00 AM',
+      title: 'Behavioural Design: Where Behavioural Science Meets Creativity',
+      theme: 'Design craft',
+      topics: ['In-Person', 'Course', 'Build Craft'],
+      speakers: [
+        { name: 'MakeIt Lab', role: 'Behavioral Design Team', company: 'MakeIt Lab' }
+      ],
+      location: 'In-Person'
     },
     {
       week: 'week5',
-      date: 'Feb 3-7, 2025',
-      day: 'Week 5',
-      time: '3:15PM – 3:35PM SGT',
-      title: 'The Future of Government Design',
-      theme: 'Keynote',
-      topics: ['Future trends', 'Innovation'],
+      date: 'Jul 29, 2025',
+      day: 'Tuesday',
+      time: '9:00 AM',
+      title: 'Inclusive Design Week - Day 1',
+      theme: 'Design craft',
+      topics: ['Inclusive Design Week', 'In-Person'],
       speakers: [
-        { name: 'Panel Discussion', role: 'Various Leaders', company: 'GovTech Singapore' }
+        { name: 'Inclusive Design Week Team', role: 'Workshop Facilitators', company: 'Various Organizations' }
       ],
-      location: 'Main Auditorium'
+      location: 'In-Person'
+    },
+    {
+      week: 'week5',
+      date: 'Jul 30, 2025',
+      day: 'Wednesday',
+      time: '9:00 AM',
+      title: 'Inclusive Design Week - Day 2',
+      theme: 'Design craft',
+      topics: ['Inclusive Design Week', 'In-Person'],
+      speakers: [
+        { name: 'Inclusive Design Week Team', role: 'Workshop Facilitators', company: 'Various Organizations' }
+      ],
+      location: 'In-Person'
+    },
+    {
+      week: 'week5',
+      date: 'Jul 31, 2025',
+      day: 'Thursday',
+      time: '9:00 AM',
+      title: 'Inclusive Design Week - Day 3',
+      theme: 'Design craft',
+      topics: ['Inclusive Design Week', 'In-Person'],
+      speakers: [
+        { name: 'Inclusive Design Week Team', role: 'Workshop Facilitators', company: 'Various Organizations' }
+      ],
+      location: 'In-Person'
+    },
+    {
+      week: 'week5',
+      date: 'Jul 31, 2025',
+      day: 'Thursday',
+      time: '2:30 PM',
+      title: 'Closing Session',
+      theme: 'Keynote',
+      topics: ['In-Person', 'Get Swag', 'Got Food!', 'Talk'],
+      speakers: [
+        { name: 'Eyung', role: 'Festival Organizer', company: 'GovTech Singapore' },
+        { name: 'Shalom', role: 'Festival Organizer', company: 'GovTech Singapore' },
+        { name: 'Amanda', role: 'Festival Organizer', company: 'GovTech Singapore' },
+        { name: 'Joy', role: 'Festival Organizer', company: 'GovTech Singapore' }
+      ],
+      location: 'In-Person'
     }
   ]
 
-  const filteredItems = agendaItems.filter(item => item.week === selectedWeek)
+  // Helper function to group items by date
+  const groupItemsByDate = (items: typeof agendaItems) => {
+    return items.reduce((groups, item) => {
+      const dateKey = `${item.day}, ${item.date}`;
+      if (!groups[dateKey]) {
+        groups[dateKey] = [];
+      }
+      groups[dateKey].push(item);
+      return groups;
+    }, {} as Record<string, typeof agendaItems>);
+  }
+
+  // Helper function to render agenda cards for a week
+  const renderWeekContent = (weekKey: string) => {
+    const filteredItems = agendaItems.filter(item => item.week === weekKey)
+    const groupedItems = groupItemsByDate(filteredItems)
 
   return (
-    <section className="bg-gray-50 py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-8">Full Agenda</h2>
-        
-        {/* Week Filter */}
-        <div className="mb-12">
-          <h3 className="text-lg font-semibold mb-6 text-gray-900">Filter by week:</h3>
-          <div className="flex flex-wrap gap-2">
-            {[
-              { key: 'week1', label: 'Week 1' },
-              { key: 'week2', label: 'Week 2' },
-              { key: 'week3', label: 'Week 3' },
-              { key: 'week4', label: 'Week 4' },
-              { key: 'week5', label: 'Week 5' }
-            ].map((week) => (
-              <Button
-                key={week.key}
-                variant={selectedWeek === week.key ? "default" : "ghost"}
-                onClick={() => setSelectedWeek(week.key)}
-                className={`
-                  relative px-6 py-3 font-medium transition-all duration-200 ease-in-out
-                  ${selectedWeek === week.key 
-                    ? 'bg-black text-white shadow-lg transform scale-105 hover:bg-gray-800' 
-                    : 'text-gray-700 border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-900 hover:shadow-md'
-                  }
-                  focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2
-                `}
-              >
-                {week.label}
-              </Button>
-            ))}
-          </div>
+      <div className="space-y-8">
+        {Object.entries(groupedItems).map(([dateKey, items]) => (
+          <div key={dateKey} className="space-y-4">
+            {/* Day Section Title */}
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold text-gray-700">{dateKey}</h3>
         </div>
 
-        {/* Agenda Items */}
+            {/* Items for this day */}
         <div className="space-y-4">
-          {filteredItems.map((item, index) => (
+              {items.map((item, index) => (
             <div 
               key={index} 
               className="group bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-300 ease-in-out hover:-translate-y-1"
@@ -486,16 +878,12 @@ function AgendaSection() {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-sm text-gray-600 font-medium bg-gray-100 px-3 py-1 rounded-full">
-                      {item.day}, {item.date}
-                    </span>
-                    <span className="text-sm text-gray-400">•</span>
                     <span className="text-sm text-gray-600 font-medium">{item.time}</span>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-black transition-colors">
+                      <h4 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-black transition-colors">
                     {item.title}
-                  </h3>
+                      </h4>
                   
                   <div className="flex flex-wrap gap-2 mb-5">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
@@ -541,6 +929,49 @@ function AgendaSection() {
               </div>
             </div>
           ))}
+        </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  return (
+    <section className="bg-gray-50 py-24 px-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl lg:text-5xl font-bold mb-8">Agenda</h2>
+        
+        {/* Week Tabs */}
+        <div className="mb-8">
+          <Tabs defaultValue="week1">
+            <TabsList className="h-12 bg-transparent gap-2 p-0">
+              <TabsTrigger value="week1" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 1</TabsTrigger>
+              <TabsTrigger value="week2" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 2</TabsTrigger>
+              <TabsTrigger value="week3" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 3</TabsTrigger>
+              <TabsTrigger value="week4" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 4</TabsTrigger>
+              <TabsTrigger value="week5" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 5</TabsTrigger>
+            </TabsList>
+          
+          <TabsContent value="week1" className="mt-8">
+            {renderWeekContent('week1')}
+          </TabsContent>
+          
+          <TabsContent value="week2" className="mt-8">
+            {renderWeekContent('week2')}
+          </TabsContent>
+          
+          <TabsContent value="week3" className="mt-8">
+            {renderWeekContent('week3')}
+          </TabsContent>
+          
+          <TabsContent value="week4" className="mt-8">
+            {renderWeekContent('week4')}
+          </TabsContent>
+          
+                    <TabsContent value="week5" className="mt-8">
+            {renderWeekContent('week5')}
+          </TabsContent>
+        </Tabs>
         </div>
       </div>
     </section>
