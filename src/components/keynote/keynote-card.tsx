@@ -7,20 +7,20 @@ interface KeynoteCardProps {
 
 export function KeynoteCard({ keynote }: KeynoteCardProps) {
   const themeColors = {
-    pink: 'bg-pink-500',
-    blue: 'bg-blue-500'
+    pink: 'bg-[#FF4DC3]',
+    blue: 'bg-[#4D8EFF]'
   }
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
       <div className="flex flex-col lg:flex-row">
         {/* Left side - Session Info */}
-        <div className="flex-1 p-8 lg:p-12">
-          <div className="text-sm text-gray-600 mb-2">
+        <div className="flex-1 p-6 lg:p-8">
+          <div className="text-sm text-gray-600 mb-3">
             {keynote.date}, {keynote.time} | {keynote.location}
           </div>
           
-          <h3 className="text-4xl lg:text-5xl font-bold text-black mb-6">
+          <h3 className="text-2xl lg:text-3xl font-bold text-black mb-4">
             {keynote.title}
           </h3>
           
@@ -28,53 +28,46 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
             {keynote.tags.map((tag, index) => (
               <span 
                 key={index}
-                className={`${themeColors[keynote.theme]} text-white px-4 py-2 rounded-full text-sm font-medium`}
+                className={`${themeColors[keynote.theme]} text-white px-3 py-1.5 rounded-full text-xs font-medium`}
               >
                 {tag}
               </span>
             ))}
           </div>
           
-          <div className="flex gap-4">
-            <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors flex items-center">
-              Watch recording
-              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </button>
-            <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+          <div className="flex gap-3">
+            <button className="border border-black text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm">
               View details
             </button>
           </div>
         </div>
         
-        {/* Right side - Large Speaker Photos */}
-        <div className={`${themeColors[keynote.theme]} lg:w-1/2 p-8 lg:p-12 flex flex-col justify-between min-h-[300px]`}>
-          {/* Large connected speaker photos */}
-          <div className="flex-1 flex">
-            {keynote.speakers.map((speaker, index) => (
+        {/* Right side - Compact Speaker Photos */}
+        <div className="w-full lg:w-[450px] p-6 lg:p-8 flex flex-col justify-center">
+          <div className={`flex gap-2 lg:gap-4 ${keynote.speakers.length === 1 ? 'justify-center' : 'justify-center lg:justify-end'}`}>
+            {keynote.speakers.slice(0, 2).map((speaker, index) => (
               <div 
                 key={index}
-                className={`flex-1 rounded-3xl overflow-hidden ${index < keynote.speakers.length - 1 ? 'mr-4' : ''}`}
+                className="flex flex-col items-center flex-1 lg:flex-none"
               >
-                <Image
-                  src={speaker.image || "/assets/images/speaker-lillian.png"}
-                  alt={speaker.name}
-                  width={200}
-                  height={300}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-          
-          {/* Speaker info at bottom */}
-          <div className="flex gap-4 mt-6">
-            {keynote.speakers.map((speaker, index) => (
-              <div key={index} className="flex-1">
-                <div className="text-white font-bold text-lg mb-1">{speaker.name}</div>
-                <div className="text-white/90 text-sm">{speaker.title}</div>
-                <div className="text-white/90 text-sm">{speaker.organization}</div>
+                <div className={`${themeColors[keynote.theme]} rounded-3xl mb-3`}>
+                  <div className="w-32 h-32 lg:w-56 lg:h-56 rounded-3xl overflow-hidden">
+                    <Image
+                      src={speaker.image}
+                      alt={speaker.name}
+                      width={224}
+                      height={224}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Speaker info below each photo */}
+                <div className="text-center w-32 lg:w-56 mt-2">
+                  <div className="text-black font-semibold mb-1 leading-tight text-xs lg:text-sm break-words">{speaker.name}</div>
+                  <div className="text-gray-600 leading-tight text-xs lg:text-sm break-words">{speaker.title}</div>
+                  <div className="text-gray-600 leading-tight text-xs lg:text-sm break-words">{speaker.organization}</div>
+                </div>
               </div>
             ))}
           </div>
