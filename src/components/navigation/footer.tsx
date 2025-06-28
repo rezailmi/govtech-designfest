@@ -6,30 +6,8 @@ export function Footer() {
   return (
     <footer className="bg-black text-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Top section with links */}
-        <div className="mb-16">
-          {/* Event Links */}
-          <div>
-            <h3 className="text-sm font-semibold mb-6 tracking-wider">EVENT</h3>
-            <div className="space-y-4">
-              <Link href="#keynotes" className="block text-gray-300 hover:text-white transition-colors">
-                Keynote
-              </Link>
-              <Link href="#agenda" className="block text-gray-300 hover:text-white transition-colors">
-                Agenda
-              </Link>
-              <Link href="#register" className="block text-gray-300 hover:text-white transition-colors">
-                Register
-              </Link>
-              <Link href="#people" className="block text-gray-300 hover:text-white transition-colors">
-                People
-              </Link>
-            </div>
-          </div>
-        </div>
-
         {/* Footer Illustration */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-16">
           <Image 
             src="/assets/icons/illustrations/footer-illustration.png" 
             alt="GovTech Design Festival 2025 - Impact by Design" 
@@ -40,15 +18,28 @@ export function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
-          <div className="flex items-center space-x-6 mb-4 md:mb-0">
-            <p className="text-gray-400 text-sm">GovTech Design Festival © 2025</p>
-            <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Event Terms
-            </Link>
-          </div>
-          <div className="text-gray-400 text-sm">
-            GovTech
+        <div className="border-t border-gray-800 pt-8">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+            {/* Copyright */}
+            <div className="flex items-center">
+              <p className="text-gray-400 text-sm">GovTech Design Festival © 2025</p>
+            </div>
+
+            {/* Navigation links - horizontal */}
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <Link href="#keynotes" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Keynote
+              </Link>
+              <Link href="#agenda" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Agenda
+              </Link>
+              <Link href="#register" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Register
+              </Link>
+              <Link href="#people" className="text-gray-300 hover:text-white transition-colors text-sm">
+                People
+              </Link>
+            </div>
           </div>
         </div>
       </div>

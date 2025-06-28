@@ -49,6 +49,11 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
             </div>
             
             <div className="flex gap-3">
+              {keynote.location === 'Online' && (
+                <button className="bg-black text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm">
+                  Join via SG-Teams
+                </button>
+              )}
               <button className="border border-black text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm">
                 View details
               </button>

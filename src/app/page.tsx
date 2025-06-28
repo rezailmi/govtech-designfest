@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarqueeTicker } from "@/components/ui/marquee-ticker"
 import { KeynoteList } from "@/components/keynote/keynote-list"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 
 // Draggable Sticker Component
@@ -97,12 +97,35 @@ function DraggableSticker({
 }
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Top Overscroll Background */}
+      <div className="fixed top-0 left-0 right-0 h-screen -z-10" style={{backgroundColor: '#70094E'}} />
+      
+      {/* Bottom Overscroll Background */}
+      <div className="fixed bottom-0 left-0 right-0 h-screen -z-10 bg-black" />
+      
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden" style={{backgroundColor: '#70094E'}}>
-        {/* Background Hero Illustration */}
-        <div className="absolute inset-0">
+        {/* Background Hero Illustration with Parallax */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
+        >
           <Image 
             src="/assets/icons/illustrations/hero-illustration.png" 
             alt="GovTech Design Festival Hero Illustration" 
@@ -294,43 +317,6 @@ export default function Home() {
 
       {/* Full Agenda Section */}
       <AgendaSection />
-
-      {/* Why attend Govtech design festival Section */}
-      <section className="bg-white py-24 px-6 border-t">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-4xl lg:text-5xl font-bold mb-8">Why attend Govtech design festival</h3>
-          <p className="text-xl text-gray-600 mb-16 max-w-4xl">
-            Embark on a learning adventure through three exciting tracks:
-          </p>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-            {/* Inner Compass (Self) */}
-            <div>
-              <h4 className="text-2xl font-bold mb-6">Inner Compass (Self)</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Build habits, mindsets, and resources to excel as designers, teammates, and change agents
-              </p>
-            </div>
-
-            {/* Journey Kits (Craft) */}
-            <div>
-              <h4 className="text-2xl font-bold mb-6">Journey Kits (Craft)</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Adopt innovative practices and tools to improve quality and maintain relevance
-              </p>
-            </div>
-
-            {/* Impact Stories */}
-            <div>
-              <h4 className="text-2xl font-bold mb-6">Impact Stories</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Learn from real successes that created tangible impact for stakeholders
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
 
     </div>
   )

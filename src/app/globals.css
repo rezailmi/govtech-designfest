@@ -54,4 +54,8 @@
     background-color: white;
     color: black;
   }
+  
+  button {
+    cursor: pointer;
+  }
 } 
