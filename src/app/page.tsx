@@ -210,48 +210,64 @@ export default function Home() {
       {/* Marquee Ticker */}
       <MarqueeTicker />
 
-      {/* CTA Cards */}
-      <section className="bg-gray-50 py-24 px-6">
+      {/* CTAs Section */}
+      <section className="py-16 px-6" style={{ backgroundColor: '#080c1b' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Slack Channel Card */}
-            <div className="bg-[#CCFF66] rounded-2xl p-8 lg:p-12">
-              <div className="max-w-lg">
-                <p className="text-lg mb-4 font-medium">💬 Stay Connected</p>
-                <h3 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-                  Join our Festival Slack Channel
-                </h3>
-                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-lg font-semibold">
-                  Join Slack Channel
-                </Button>
+          {/* Main Heading */}
+          <div className="text-center mb-12">
+            <h2 className="text-white text-2xl lg:text-3xl font-medium leading-tight tracking-tight" style={{ fontFamily: 'Geist Mono, monospace' }}>
+              We invite you to attend<br />
+              GovTech Design Festival 2025
+            </h2>
+          </div>
+
+          {/* Two Column CTAs */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 max-w-5xl mx-auto">
+            
+            {/* Join Us CTA */}
+            <div className="flex flex-col items-center text-center">
+              {/* Join Us Illustration */}
+              <div className="mb-6 h-[280px] flex items-center justify-center">
+                <Image
+                  src="/assets/icons/illustrations/illustration-join.png"
+                  alt="Join Us"
+                  width={280}
+                  height={280}
+                  className="w-full h-full object-contain"
+                />
               </div>
+              
+              <h3 className="text-white text-lg lg:text-xl font-semibold mb-6 leading-tight min-h-[3rem] flex items-center justify-center">
+                Latest announcements and updates
+              </h3>
+              
+              <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-base font-medium rounded-md">
+                Join Slack channel
+              </Button>
             </div>
 
-            {/* Registration Card */}
-            <div className="bg-purple-500 rounded-2xl p-8 lg:p-12 text-white">
-              <div className="max-w-lg">
-                <p className="text-lg mb-4 font-medium">🎯 Registration</p>
-                <h3 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-                  Register now to save your spot!
-                </h3>
-                <Button className="bg-white text-purple-500 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-                  Register Now
-                </Button>
+            {/* Save Your Spot CTA */}
+            <div className="flex flex-col items-center text-center">
+              {/* Save Your Spot Illustration */}
+              <div className="mb-6 h-[280px] flex items-center justify-center">
+                <Image
+                  src="/assets/icons/illustrations/illustration-register.png"
+                  alt="Save your spot"
+                  width={280}
+                  height={280}
+                  className="w-full h-full object-contain"
+                />
               </div>
+              
+              <h3 className="text-white text-lg lg:text-xl font-semibold mb-6 leading-tight min-h-[3rem] flex items-center justify-center">
+                Reservation sessions
+              </h3>
+              
+              <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-base font-medium rounded-md">
+                Register
+              </Button>
             </div>
 
-            {/* View Agenda Card */}
-            <div className="bg-blue-500 rounded-2xl p-8 lg:p-12 text-white">
-              <div className="max-w-lg">
-                <p className="text-lg mb-4 font-medium">📅 Full Schedule</p>
-                <h3 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-                  View full event agenda
-                </h3>
-                <Button className="bg-white text-blue-500 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-                  View Agenda
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </section>
