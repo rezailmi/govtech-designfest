@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarqueeTicker } from "@/components/ui/marquee-ticker"
+import { KeynoteList } from "@/components/keynote/keynote-list"
 import { useState, useRef } from "react"
 import Image from "next/image"
 
@@ -272,236 +273,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Speakers Section */}
-      <section className="bg-black text-white py-24 px-6">
+      {/* Keynote Section */}
+      <section className="bg-gray-100 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-16">Keynote</h2>
-          
-          {/* Featured Speakers List */}
-          <div className="space-y-8">
-            
-            {/* Keynote 1 - Opening Address & Design Innovation */}
-            <div className="bg-white rounded-lg overflow-hidden">
-              <div className="flex flex-col lg:flex-row">
-                {/* Left side - Session Info */}
-                <div className="flex-1 p-8 lg:p-12">
-                  <div className="text-gray-600 text-sm mb-4">Jul 1, 2025 10:30 AM - 11:30 AM PDT | Main Stage: Opening ceremony</div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Opening Address & Design Innovation Keynote</h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
-                    <span className="bg-gray-200 px-4 py-2 rounded-full text-sm font-semibold text-black">OPENING</span>
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                      Join
-                    </button>
-                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                      View details
-                    </button>
-                  </div>
-                </div>
-                {/* Right side - Speakers */}
-                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">DGE Sau Sheong</h4>
-                      <p className="text-sm text-black/80">Deputy Government Engineer</p>
-                      <p className="text-sm text-black/80">GovTech Singapore</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">Shiao-Yin Kuik</h4>
-                      <p className="text-sm text-black/80">Design Director</p>
-                      <p className="text-sm text-black/80">GovTech Singapore</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Keynote 2 - Government Design Strategy */}
-            <div className="bg-white rounded-lg overflow-hidden">
-              <div className="flex flex-col lg:flex-row">
-                <div className="flex-1 p-8 lg:p-12">
-                  <div className="text-gray-600 text-sm mb-4">Jul 7, 2025 11:30 AM - 12:30 PM PDT | Main Stage: Policy meets design</div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">From Policy to Impact: Design&apos;s Role in Government</h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
-                    <span className="bg-orange-200 px-4 py-2 rounded-full text-sm font-semibold text-black">STRATEGY</span>
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                      Join
-                    </button>
-                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                      View details
-                    </button>
-                  </div>
-                </div>
-                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">2PS Augustin</h4>
-                      <p className="text-sm text-black/80">Second Permanent Secretary</p>
-                      <p className="text-sm text-black/80">Smart Nation Group</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">Lillian Shieh</h4>
-                      <p className="text-sm text-black/80">Director, Design</p>
-                      <p className="text-sm text-black/80">GovTech Singapore</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Keynote 3 - Design Systems */}
-            <div className="bg-white rounded-lg overflow-hidden">
-              <div className="flex flex-col lg:flex-row">
-                <div className="flex-1 p-8 lg:p-12">
-                  <div className="text-gray-600 text-sm mb-4">Jul 14, 2025 2:00 PM - 3:00 PM PDT | Design Stage: Building at scale</div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Building Design Systems for Government Scale</h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
-                    <span className="bg-blue-200 px-4 py-2 rounded-full text-sm font-semibold text-black">DESIGN SYSTEMS</span>
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                      Join
-                    </button>
-                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                      View details
-                    </button>
-                  </div>
-                </div>
-                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
-                  <div className="flex justify-center">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">Ruby Pryor</h4>
-                      <p className="text-sm text-black/80">Senior Design Researcher</p>
-                      <p className="text-sm text-black/80">GovTech Singapore</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Keynote 4 - Inclusive Design */}
-            <div className="bg-white rounded-lg overflow-hidden">
-              <div className="flex flex-col lg:flex-row">
-                <div className="flex-1 p-8 lg:p-12">
-                  <div className="text-gray-600 text-sm mb-4">Jul 14, 2025 12:00 PM - 1:00 PM PDT | Accessibility Stage: Inclusive design</div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Designing Inclusive Government Services</h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
-                    <span className="bg-purple-200 px-4 py-2 rounded-full text-sm font-semibold text-black">ACCESSIBILITY</span>
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                      Join
-                    </button>
-                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                      View details
-                    </button>
-                  </div>
-                </div>
-                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
-                  <div className="flex justify-center">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">Dr Douglas O&apos;Loughlin</h4>
-                      <p className="text-sm text-black/80">Accessibility Expert</p>
-                      <p className="text-sm text-black/80">International Consultant</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Keynote 5 - Digital Transformation */}
-            <div className="bg-white rounded-lg overflow-hidden">
-              <div className="flex flex-col lg:flex-row">
-                <div className="flex-1 p-8 lg:p-12">
-                  <div className="text-gray-600 text-sm mb-4">Jul 21, 2025 3:00 PM - 4:00 PM PDT | Innovation Stage: Digital government</div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Digital-First Government: The Singapore Story</h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
-                    <span className="bg-blue-300 px-4 py-2 rounded-full text-sm font-semibold text-black">DIGITAL TRANSFORMATION</span>
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                      Join
-                    </button>
-                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                      View details
-                    </button>
-                  </div>
-                </div>
-                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
-                  <div className="flex justify-center">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">MOS Jasmin Bernard</h4>
-                      <p className="text-sm text-black/80">Minister of State</p>
-                      <p className="text-sm text-black/80">Ministry of Communications</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Keynote 6 - User Research */}
-            <div className="bg-white rounded-lg overflow-hidden">
-              <div className="flex flex-col lg:flex-row">
-                <div className="flex-1 p-8 lg:p-12">
-                  <div className="text-gray-600 text-sm mb-4">Jul 28, 2025 1:00 PM - 2:00 PM PDT | Research Stage: Understanding citizens</div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Understanding Citizens: Research in Government</h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    <span className="bg-[#20B2AA] px-4 py-2 rounded-full text-sm font-semibold text-black">KEYNOTE</span>
-                    <span className="bg-yellow-200 px-4 py-2 rounded-full text-sm font-semibold text-black">RESEARCH</span>
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                      Join
-                    </button>
-                    <button className="border border-black text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                      View details
-                    </button>
-                  </div>
-                </div>
-                <div className="bg-[#20B2AA] p-8 lg:p-12 lg:w-1/2">
-                  <div className="flex justify-center">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-black/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <div className="text-2xl text-black/60">👤</div>
-                      </div>
-                      <h4 className="font-bold text-lg text-black">Senior UX Researcher</h4>
-                      <p className="text-sm text-black/80">Central UX Team</p>
-                      <p className="text-sm text-black/80">GovTech Singapore</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex items-center mb-8">
+            <Image
+              src="/assets/icons/star-1.svg"
+              alt="Star Icon"
+              width={24}
+              height={24}
+              className="mr-3"
+            />
+            <h2 className="text-3xl font-bold text-black">Keynote</h2>
           </div>
+          
+          {/* Keynote Sessions List */}
+          <KeynoteList />
         </div>
       </section>
 
