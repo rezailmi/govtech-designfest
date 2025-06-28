@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState } from "react"
 import Image from "next/image"
+import { Sparkle, Zap } from "lucide-react"
 
 export default function Home() {
   return (
@@ -54,40 +55,44 @@ export default function Home() {
         </div>
 
         {/* Festival Stickers - positioned at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
-          <div className="flex justify-center items-center gap-4 lg:gap-8">
+        <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
+          <div className="flex justify-center items-center gap-2 lg:gap-4">
             {/* Date Sticker */}
             <div className="relative">
-              <div className="bg-white text-black px-6 py-3 lg:px-10 lg:py-5 rounded-2xl transform -rotate-6 font-black text-2xl lg:text-3xl shadow-xl">
+              <div className="bg-white text-black px-3 py-2 lg:px-4 lg:py-2 rounded-xl transform -rotate-6 font-black text-sm lg:text-base shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
                 1-31 JULY
               </div>
-              <div className="absolute top-0 left-0 -z-10 w-full h-full bg-pink-300 rounded-2xl transform -rotate-6 translate-x-1 translate-y-1"></div>
+              <div className="absolute top-0 left-0 -z-10 w-full h-full bg-pink-300 rounded-xl transform -rotate-6 translate-x-0.5 translate-y-0.5"></div>
             </div>
             
             {/* Year Sticker */}
             <div className="relative">
-              <div className="bg-[#6CB4EE] text-black px-10 py-5 lg:px-16 lg:py-8 rounded-3xl transform rotate-3 font-black text-4xl lg:text-6xl shadow-xl">
+              <div className="bg-[#6CB4EE] text-black px-4 py-2 lg:px-6 lg:py-3 rounded-2xl transform rotate-3 font-black text-xl lg:text-2xl shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
                 2025
               </div>
-              <div className="absolute -top-2 -right-2 text-white">
-                <svg className="w-8 h-8 lg:w-12 lg:h-12" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L14.09 8.26L20.93 8.91L16.11 13.17L17.53 19.93L12 16.47L6.47 19.93L7.89 13.17L3.07 8.91L9.91 8.26L12 2Z"/>
-                </svg>
+              <div className="absolute -top-3 -right-3">
+                <div className="relative">
+                  <Sparkle className="absolute w-9 h-9 lg:w-12 lg:h-12 text-white fill-white" style={{filter: 'blur(1px)'}} />
+                  <Sparkle className="absolute w-9 h-9 lg:w-12 lg:h-12 text-white fill-white" style={{transform: 'scale(1.3)'}} />
+                  <Sparkle className="relative w-9 h-9 lg:w-12 lg:h-12 text-black fill-black" />
+                </div>
               </div>
             </div>
             
             {/* For Everyone By Designers Sticker */}
             <div className="relative">
-              <div className="bg-[#6CB4EE] text-black px-6 py-4 lg:px-8 lg:py-6 rounded-2xl transform -rotate-3 font-black shadow-xl">
-                <div className="text-sm lg:text-base">FOR</div>
-                <div className="text-2xl lg:text-3xl -my-1">EVERYONE</div>
-                <div className="text-sm lg:text-base">BY</div>
-                <div className="text-xl lg:text-2xl">DESIGNERS</div>
+              <div className="bg-[#6CB4EE] text-black px-2 py-1 lg:px-3 lg:py-2 rounded-lg transform -rotate-3 font-black shadow-lg border-4 border-white" style={{filter: 'drop-shadow(0 0 0 2px white)'}}>
+                <div className="text-[8px] lg:text-xs font-bold leading-tight">FOR</div>
+                <div className="text-xs lg:text-sm font-black leading-none -my-0.5">EVERYONE</div>
+                <div className="text-[8px] lg:text-xs font-bold leading-tight">BY</div>
+                <div className="text-[8px] lg:text-xs font-bold leading-none">DESIGNERS</div>
               </div>
-              <div className="absolute -bottom-2 -left-2 text-white transform rotate-12">
-                <svg className="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <path d="M13 2L3 14l9 2 2 9 10-12-9-2-2-9z"/>
-                </svg>
+              <div className="absolute -bottom-3 -left-3 transform rotate-12">
+                <div className="relative">
+                  <Zap className="absolute w-6 h-6 lg:w-9 lg:h-9 text-white fill-white" style={{filter: 'blur(1px)'}} />
+                  <Zap className="absolute w-6 h-6 lg:w-9 lg:h-9 text-white fill-white" style={{transform: 'scale(1.3)'}} />
+                  <Zap className="relative w-6 h-6 lg:w-9 lg:h-9 text-black fill-black" />
+                </div>
               </div>
             </div>
           </div>
