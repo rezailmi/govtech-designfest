@@ -37,8 +37,8 @@ export const keynotes: Keynote[] = [
         image: '/assets/images/speaker-shiao-yin.png'
       }
     ],
-    theme: 'pink',
-    tags: ['Keynote', 'Get Swag', 'In-Person', 'Talk']
+    theme: 'blue',
+    tags: ['In-Person', 'Talk', 'Get Swag']
   },
   {
     id: 'empathy-fireside',
@@ -51,17 +51,17 @@ export const keynotes: Keynote[] = [
         name: 'MOS Jasmin',
         title: 'Minister of State',
         organization: 'MDDI and MOE',
-        image: '/assets/images/speaker-lillian.png'
+        image: '/assets/images/speaker-jasmin.png'
       },
       {
         name: 'ACE Bernard',
         title: 'Asst Chief Executive',
         organization: 'GovTech Singapore',
-        image: '/assets/images/speaker-lillian.png'
+        image: '/assets/images/speaker-bernard.png'
       }
     ],
     theme: 'blue',
-    tags: ['In-Person', 'Keynote', 'Talk']
+    tags: ['In-Person', 'Talk']
   },
   {
     id: 'policy-impact-fireside',
@@ -84,7 +84,7 @@ export const keynotes: Keynote[] = [
       }
     ],
     theme: 'blue',
-    tags: ['In-Person', 'Keynote', 'Talk']
+    tags: ['In-Person', 'Talk']
   },
   {
     id: 'insights-action',
@@ -97,11 +97,11 @@ export const keynotes: Keynote[] = [
         name: 'Ruby Pryor',
         title: 'Senior Design Researcher',
         organization: 'GovTech Singapore',
-        image: '/assets/images/speaker-lillian.png'
+        image: '/assets/images/speaker-ruby.png'
       }
     ],
     theme: 'pink',
-    tags: ['Online', 'Talk', '12 PM', 'Keynote', 'Build']
+    tags: ['Online', 'Talk', 'Build']
   },
   {
     id: 'flourishing-system',
@@ -114,10 +114,10 @@ export const keynotes: Keynote[] = [
         name: 'Dr Douglas O\'Loughlin',
         title: 'Accessibility Expert',
         organization: 'International Consultant',
-        image: '/assets/images/speaker-lillian.png'
+        image: '/assets/images/speaker-douglas.png'
       }
     ],
     theme: 'pink',
-    tags: ['Online', 'Talk', '12 PM', 'Keynote']
+    tags: ['Online', 'Talk']
   },
 ]
