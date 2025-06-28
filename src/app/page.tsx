@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarqueeTicker } from "@/components/ui/marquee-ticker"
 import { KeynoteList } from "@/components/keynote/keynote-list"
+import MoreForYou from "@/components/event/MoreForYou"
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 
@@ -317,6 +318,9 @@ export default function Home() {
 
       {/* Full Agenda Section */}
       <AgendaSection />
+
+      {/* More For You Section */}
+      <MoreForYou />
 
     </div>
   )
