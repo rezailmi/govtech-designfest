@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { MarqueeTicker } from "@/components/ui/marquee-ticker"
 import { useState, useRef } from "react"
 import Image from "next/image"
 
@@ -205,6 +206,9 @@ export default function Home() {
           </div>
         </DraggableSticker>
       </section>
+
+      {/* Marquee Ticker */}
+      <MarqueeTicker />
 
       {/* CTA Cards */}
       <section className="bg-gray-50 py-24 px-6">
