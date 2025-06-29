@@ -177,7 +177,7 @@ export const agendaItems: AgendaItem[] = [
       { name: 'Ruby Pryor', role: 'Founder', company: 'Rex' }
     ],
     location: 'In-Person',
-    locationDetails: 'MBC 30 L11 Jupiter Rooms 1+2'
+    locationDetails: 'Event location shared in invitation sent to registered attendees'
   },
   {
     week: 'week1',
@@ -243,7 +243,7 @@ export const agendaItems: AgendaItem[] = [
     topics: ['Course', 'In-Person', 'Build Craft'],
     speakers: [{ name: 'Kontinentalist', role: 'Instructor', company: 'Kontinentalist' }],
     location: 'In-Person',
-    locationDetails: 'MBC 30 Jupiter Rooms 1+2'
+    locationDetails: 'Event location shared in invitation sent to registered attendees'
   },
   {
     week: 'week2',
@@ -294,7 +294,7 @@ export const agendaItems: AgendaItem[] = [
     topics: ['Course', 'In-Person', 'Build Self', 'Build Craft'],
     speakers: [{ name: 'Art of Awakening', role: 'Instructor', company: 'Art of Awakening' }],
     location: 'In-Person',
-    locationDetails: 'MBC 10 L10 The Big Place'
+    locationDetails: 'Event location shared in invitation sent to registered attendees'
   },
   {
     week: 'week2',
@@ -366,7 +366,7 @@ export const agendaItems: AgendaItem[] = [
     topics: ['Course', 'In-Person', 'Build Craft'],
     speakers: [{ name: 'Studio Dojo', role: 'Instructor', company: 'Studio Dojo' }],
     location: 'In-Person',
-    locationDetails: 'MBC30 L11 Jupiter Rooms 1+2'
+    locationDetails: 'Event location shared in invitation sent to registered attendees'
   },
   {
     week: 'week3',
@@ -531,7 +531,7 @@ export const agendaItems: AgendaItem[] = [
     topics: ['Course', 'In-Person', 'Build Craft'],
     speakers: [{ name: 'MakeIt Lab', role: 'Instructor', company: 'MakeIt Lab' }],
     location: 'In-Person',
-    locationDetails: 'MBC 30 L11 Jupiter Rooms 1+2'
+    locationDetails: 'Event location shared in invitation sent to registered attendees'
   },
   {
     week: 'week5',

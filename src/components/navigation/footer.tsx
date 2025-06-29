@@ -55,7 +55,7 @@ export function Footer() {
                 <button onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-white transition-colors text-sm">
                   Agenda
                 </button>
-                <Link href="#people" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link href="/people" className="text-gray-300 hover:text-white transition-colors text-sm">
                   People
                 </Link>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center" target="_blank" rel="noopener noreferrer">

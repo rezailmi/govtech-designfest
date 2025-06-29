@@ -38,7 +38,7 @@ export const eventDetails: Record<string, EventDetail> = {
     date: "28/07/2025",
     time: "9:00 AM (GMT+8)",
     tags: ["Course 📚", "In-Person", "🔨 Build Craft"],
-    location: "MBC 30 L11 Jupiter Rooms 1+2",
+    location: "Event location shared in invitation sent to registered attendees",
     description: "Learn to design human-centered solutions using the Make It Toolkit through hands-on application of behavioral science principles. This workshop combines creativity with behavioral insights to influence real-world change in products, policies, and services."
   },
   "Closing Session": {
@@ -94,7 +94,7 @@ export const eventDetails: Record<string, EventDetail> = {
     date: "08/07/2025",
     time: "9:30 AM (GMT+8)",
     tags: ["Course 📚", "In-Person", "🔨 Build Craft"],
-    location: "MBC 30 Jupiter Rooms 1+2",
+    location: "Event location shared in invitation sent to registered attendees",
     description: "In a world inundated with information and where data is priority, knowing how to handle and present it effectively and responsibly is vital. Kontinentalist will take you through the basics of data handling, storytelling, and visual design."
   },
   "Design Arcade (Lunch Provided!)": {
@@ -375,7 +375,7 @@ Most of us answer that question on autopilot. But beneath the surface, many desi
     date: "15/07/2025",
     time: "2:00 PM (GMT+8)",
     tags: ["Course 📚", "In-Person", "🔨 Build Craft"],
-    location: "MBC30 L11 Jupiter Rooms 1+2",
+    location: "Event location shared in invitation sent to registered attendees",
     description: "Whether you're a product manager building your research foundations or a seasoned research practitioner looking to become more intentional in your craft, this is a hands-on workshop that delves into the messiness of sense-making, offering you a reflexive space to learn how to analyse and synthesise qualitative data through guided practice."
   },
   "Journeys are not single-use plastics: A sustainable approach to making reusable maps": {
@@ -496,7 +496,7 @@ Some of the topics that will be covered include:
     date: "04/07/2025",
     time: "9:00 AM (GMT+8)",
     tags: ["Course 📚", "In-Person", "🔨 Build Craft"],
-    location: "MBC 30 L11 Jupiter Rooms 1+2",
+    location: "Event location shared in invitation sent to registered attendees",
     description: "By the end of this hands-on workshop participants will have developed a high level plan to test their prototype, at least one prototype using AI and a discussion guide to use in customer research sessions. This workshop will be a combination of theory and practice with lots of space for experimentation and learning."
   },
   "Scrappy not crappy: Quick shortcuts to deliver a good product": {
@@ -586,7 +586,7 @@ Lastly, we'll share how we engaged and educated GovTechies through roadshows, in
     date: "11/07/2025",
     time: "9:00 AM (GMT+8)",
     tags: ["Course 📚", "In-Person", "🌱 Build Self", "🔨 Build Craft"],
-    location: "MBC 10 L10 The Big Place",
+    location: "Event location shared in invitation sent to registered attendees",
     description: "In the fast-evolving world of digital GovTechation, UX designers are visual thinkers at heart – but how do we nurture that core creative instinct through pen-on-paper expression?"
   }
 };
