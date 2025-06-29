@@ -14,6 +14,7 @@ export interface Keynote {
   speakers: Speaker[]
   theme: 'pink' | 'blue'
   tags: string[]
+  joinUrl?: string
 }
 
 export const keynotes: Keynote[] = [
@@ -32,13 +33,13 @@ export const keynotes: Keynote[] = [
       },
       {
         name: 'Shiao-Yin Kuik',
-        title: 'Design Director',
-        organization: 'GovTech Singapore',
+        title: 'Executive Director',
+        organization: 'Common Ground Civic Centre',
         image: '/assets/images/speaker-shiao-yin.png'
       }
     ],
     theme: 'blue',
-    tags: ['In-Person', 'Talk', 'Get Swag']
+    tags: ['Get Swag', 'In-Person', 'Keynote', 'Talk']
   },
   {
     id: 'empathy-fireside',
@@ -61,14 +62,14 @@ export const keynotes: Keynote[] = [
       }
     ],
     theme: 'blue',
-    tags: ['In-Person', 'Talk']
+    tags: ['In-Person', 'Keynote', 'Talk']
   },
   {
     id: 'policy-impact-fireside',
-    title: 'Fireside Chat with 2PS and Lillian Shieh: From Policy to Impact: Design\'s Role in Government',
+    title: 'Fireside Chat with 2PS and Lillian Shieh',
     date: '07 Jul 2025',
     time: '11:30 AM',
-    location: 'MBC 10 L10 The Big Place',
+    location: 'MBC 10 - Level 10 (The Big Place)',
     speakers: [
       {
         name: '2PS Augustin',
@@ -84,14 +85,14 @@ export const keynotes: Keynote[] = [
       }
     ],
     theme: 'blue',
-    tags: ['In-Person', 'Talk']
+    tags: ['In-Person', 'Keynote', 'Talk']
   },
   {
     id: 'insights-action',
     title: 'From Insights to Action: Driving Impact',
     date: '07 Jul 2025',
     time: '12:00 PM',
-    location: 'Online',
+    location: 'Online (SG-Teams)',
     speakers: [
       {
         name: 'Ruby Pryor',
@@ -101,14 +102,15 @@ export const keynotes: Keynote[] = [
       }
     ],
     theme: 'pink',
-    tags: ['Online', 'Talk', 'Build']
+    tags: ['12 PM', 'Keynote', 'Build Self', 'Talk', 'Online', 'Build Craft'],
+    joinUrl: 'https://go.gov.sg/designfestival-talk12pm'
   },
   {
     id: 'flourishing-system',
     title: 'Flourishing at All Levels of the System',
     date: '14 Jul 2025',
     time: '12:00 PM',
-    location: 'Online',
+    location: 'Online (SG-Teams)',
     speakers: [
       {
         name: 'Dr Douglas O\'Loughlin',
@@ -118,6 +120,7 @@ export const keynotes: Keynote[] = [
       }
     ],
     theme: 'pink',
-    tags: ['Online', 'Talk']
+    tags: ['12 PM', 'Keynote', 'Build Self', 'Talk', 'Online', 'Build Craft'],
+    joinUrl: 'https://go.gov.sg/designfestival-talk12pm'
   },
 ]

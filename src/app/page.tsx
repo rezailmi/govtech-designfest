@@ -1072,37 +1072,37 @@ function AgendaSection() {
         </div>
         
         {/* Week Tabs */}
-        <div className="mb-8 -mx-6 px-6 overflow-x-auto scrollbar-hide">
-          <Tabs defaultValue="week1">
-            <TabsList className="h-12 bg-transparent gap-2 p-0 w-fit min-w-full flex">
+        <Tabs defaultValue="week1" className="mb-8">
+          <div className="overflow-x-auto sm:overflow-x-visible mb-8 scrollbar-hide">
+            <TabsList className="h-12 bg-transparent gap-2 p-0 w-fit flex">
               <TabsTrigger value="week1" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 1</TabsTrigger>
               <TabsTrigger value="week2" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 2</TabsTrigger>
               <TabsTrigger value="week3" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 3</TabsTrigger>
               <TabsTrigger value="week4" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 4</TabsTrigger>
               <TabsTrigger value="week5" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 5</TabsTrigger>
             </TabsList>
+          </div>
           
-          <TabsContent value="week1" className="mt-8">
+          <TabsContent value="week1">
             {renderWeekContent('week1')}
           </TabsContent>
           
-          <TabsContent value="week2" className="mt-8">
+          <TabsContent value="week2">
             {renderWeekContent('week2')}
           </TabsContent>
           
-          <TabsContent value="week3" className="mt-8">
+          <TabsContent value="week3">
             {renderWeekContent('week3')}
           </TabsContent>
           
-          <TabsContent value="week4" className="mt-8">
+          <TabsContent value="week4">
             {renderWeekContent('week4')}
           </TabsContent>
           
-                    <TabsContent value="week5" className="mt-8">
+          <TabsContent value="week5">
             {renderWeekContent('week5')}
           </TabsContent>
         </Tabs>
-        </div>
       </div>
     </section>
   )

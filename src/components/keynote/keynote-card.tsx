@@ -49,10 +49,18 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
             </div>
             
             <div className="flex gap-3">
-              {keynote.location === 'Online' && (
-                <button className="bg-black text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm">
+              {keynote.joinUrl && (
+                <a 
+                  href={keynote.joinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-black text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm inline-flex items-center gap-2"
+                >
                   Join via SG-Teams
-                </button>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
               )}
               <button className="border border-black text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm">
                 View details
@@ -70,7 +78,7 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
                 className="flex flex-col items-center"
               >
                 <div className={`${themeColors[keynote.theme]} rounded-3xl mb-3`}>
-                  <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-3xl overflow-hidden">
+                  <div className="w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-3xl overflow-hidden">
                     <Image
                       src={speaker.image || "/assets/images/speaker-lillian.png"}
                       alt={speaker.name}
@@ -82,7 +90,7 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
                 </div>
                 
                 {/* Speaker info below each photo */}
-                <div className="text-center w-40 sm:w-48 lg:w-56 mt-2">
+                <div className="text-center w-32 sm:w-48 lg:w-56 mt-2">
                   <div className="text-black font-semibold mb-1 leading-tight text-sm sm:text-base lg:text-lg break-words">{speaker.name}</div>
                   <div className="text-gray-600 leading-tight text-xs sm:text-sm lg:text-base break-words">{speaker.title}</div>
                   <div className="text-gray-600 leading-tight text-xs sm:text-sm lg:text-base break-words">{speaker.organization}</div>
