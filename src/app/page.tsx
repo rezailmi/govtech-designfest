@@ -135,38 +135,76 @@ export default function Home() {
         
         {/* Header Container */}
         <div className="absolute top-0 left-0 right-0 p-4 md:p-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            
-            {/* GovTech Logo */}
-            <div className="flex justify-center md:justify-start">
+          <div className="flex flex-col gap-6 md:gap-4">
+            {/* Mobile: Logo centered at top */}
+            <div className="flex md:hidden justify-center">
               <Image 
                 src="/assets/icons/logos/gdf-logo.svg" 
                 alt="GovTech Design Festival" 
                 width={120}
                 height={48}
-                className="h-10 md:h-12 w-auto"
+                className="h-10 w-auto"
                 priority
               />
             </div>
-
-            {/* Navigation */}
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-end gap-3 sm:gap-4 md:gap-8 text-white">
-              <a href="#keynotes" className="hover:text-pink-300 transition-colors">Keynotes</a>
-              <a href="#agenda" className="hover:text-pink-300 transition-colors">Agenda</a>
-              <a href="#people" className="hover:text-pink-300 transition-colors flex items-center" target="_blank" rel="noopener noreferrer">
-                People 
-                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-              <Button asChild className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-lg font-semibold">
-                <a href="#register" className="flex items-center" target="_blank" rel="noopener noreferrer">
-                  Register
+            
+            {/* Desktop: Three column layout */}
+            <div className="flex items-center justify-between">
+              {/* Left Navigation - Keynotes, Agenda */}
+              <div className="hidden md:flex items-center gap-8 text-white flex-1">
+                <button onClick={() => document.getElementById('keynotes')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-pink-300 transition-colors">Keynotes</button>
+                <button onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-pink-300 transition-colors">Agenda</button>
+              </div>
+              
+              {/* Center Logo - Desktop only */}
+              <div className="hidden md:flex justify-center">
+                <Image 
+                  src="/assets/icons/logos/gdf-logo.svg" 
+                  alt="GovTech Design Festival" 
+                  width={120}
+                  height={48}
+                  className="h-12 w-auto"
+                  priority
+                />
+              </div>
+              
+              {/* Right Navigation - People, Register */}
+              <div className="hidden md:flex items-center justify-end gap-8 text-white flex-1">
+                <a href="#people" className="hover:text-pink-300 transition-colors flex items-center" target="_blank" rel="noopener noreferrer">
+                  People 
                   <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
-              </Button>
+                <Button asChild className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-lg font-semibold">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="flex items-center" target="_blank" rel="noopener noreferrer">
+                    Register
+                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </Button>
+              </div>
+              
+              {/* Mobile Navigation - All links in a row */}
+              <div className="flex md:hidden items-center justify-between gap-2 text-white text-sm w-full px-2">
+                <button onClick={() => document.getElementById('keynotes')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-pink-300 transition-colors flex-1 text-center">Keynotes</button>
+                <button onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-pink-300 transition-colors flex-1 text-center">Agenda</button>
+                <a href="#people" className="hover:text-pink-300 transition-colors flex items-center justify-center flex-1" target="_blank" rel="noopener noreferrer">
+                  People 
+                  <svg className="ml-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <Button asChild className="bg-black text-white hover:bg-gray-800 px-2 py-1.5 rounded-lg font-semibold text-sm flex-1">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                    Register
+                    <svg className="ml-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -263,9 +301,14 @@ export default function Home() {
                 Latest announcements and updates
               </h3>
               
-              <button className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm">
-                Join Slack channel
-              </button>
+              <Button asChild className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm">
+                <a href="https://govtech.enterprise.slack.com/archives/C08UP6M33J5" className="flex items-center" target="_blank" rel="noopener noreferrer">
+                  Join Slack channel
+                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </Button>
             </div>
 
             {/* Save Your Spot CTA */}
@@ -285,9 +328,14 @@ export default function Home() {
                 Register now to secure your spot
               </h3>
               
-              <button className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm">
-                Register
-              </button>
+              <Button asChild className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="flex items-center" target="_blank" rel="noopener noreferrer">
+                  Register
+                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </Button>
             </div>
 
           </div>
@@ -295,17 +343,17 @@ export default function Home() {
       </section>
 
       {/* Keynote Section */}
-      <section className="bg-gray-100 py-24 px-6">
+      <section id="keynotes" className="bg-gray-100 py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center mb-8">
             <Image
               src="/assets/icons/star-1.svg"
               alt="Star Icon"
-              width={24}
-              height={24}
-              className="mr-3"
+              width={40}
+              height={40}
+              className="mr-3 flex-shrink-0"
             />
-            <h2 className="text-3xl font-bold text-black">Keynote</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-black leading-none">Keynote</h2>
           </div>
           
           {/* Keynote Sessions List */}
@@ -1011,9 +1059,18 @@ function AgendaSection() {
   }
 
   return (
-    <section className="bg-gray-50 py-24 px-6">
+    <section id="agenda" className="bg-gray-50 py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-8">Agenda</h2>
+        <div className="flex items-center mb-8">
+          <Image
+            src="/assets/icons/zap-1.svg"
+            alt="Zap Icon"
+            width={40}
+            height={40}
+            className="mr-3 flex-shrink-0"
+          />
+          <h2 className="text-4xl lg:text-5xl font-bold text-black leading-none">Agenda</h2>
+        </div>
         
         {/* Week Tabs */}
         <div className="mb-8 -mx-6 px-6 overflow-x-auto scrollbar-hide">

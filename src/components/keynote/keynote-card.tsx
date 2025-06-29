@@ -63,11 +63,11 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
         
         {/* Right side - Compact Speaker Photos */}
         <div className="w-full lg:w-[450px] p-6 lg:p-8 flex flex-col justify-center">
-          <div className={`flex gap-2 lg:gap-4 ${keynote.speakers.length === 1 ? 'justify-start lg:justify-end' : 'justify-start lg:justify-end'}`}>
+          <div className={`flex gap-2 lg:gap-4 justify-start lg:justify-end`}>
             {keynote.speakers.slice(0, 2).map((speaker, index) => (
               <div 
                 key={index}
-                className="flex flex-col items-center flex-1 lg:flex-none"
+                className="flex flex-col items-center"
               >
                 <div className={`${themeColors[keynote.theme]} rounded-3xl mb-3`}>
                   <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-3xl overflow-hidden">

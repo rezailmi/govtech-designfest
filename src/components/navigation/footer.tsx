@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
@@ -16,7 +18,7 @@ export function Footer() {
             Don&apos;t miss out—register now!
           </p>
           <Button asChild className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-lg font-medium rounded-md">
-            <a href="#register" target="_blank" rel="noopener noreferrer">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" target="_blank" rel="noopener noreferrer">
               Register
             </a>
           </Button>
@@ -47,18 +49,21 @@ export function Footer() {
 
               {/* Navigation links - horizontal */}
               <div className="flex flex-wrap items-center justify-center gap-6">
-                <Link href="#keynotes" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <button onClick={() => document.getElementById('keynotes')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-white transition-colors text-sm">
                   Keynote
-                </Link>
-                <Link href="#agenda" className="text-gray-300 hover:text-white transition-colors text-sm">
+                </button>
+                <button onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-white transition-colors text-sm">
                   Agenda
-                </Link>
-                <Link href="#register" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Register
-                </Link>
+                </button>
                 <Link href="#people" className="text-gray-300 hover:text-white transition-colors text-sm">
                   People
                 </Link>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center" target="_blank" rel="noopener noreferrer">
+                  Register
+                  <svg className="ml-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

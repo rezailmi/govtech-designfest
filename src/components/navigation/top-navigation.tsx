@@ -32,8 +32,13 @@ export function TopNavigation() {
           <Button variant="ghost" className="text-black font-medium">
             Slack Channel
           </Button>
-          <Button className="bg-black text-white hover:bg-gray-800">
-            Register Now
+          <Button asChild className="bg-black text-white hover:bg-gray-800">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="flex items-center" target="_blank" rel="noopener noreferrer">
+              Register Now
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
           </Button>
         </div>
       </div>
