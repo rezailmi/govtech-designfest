@@ -433,7 +433,7 @@ function AgendaSection() {
                 return (
             <div 
               key={index} 
-              className="bg-gray-800 rounded-xl p-8"
+              className="bg-gray-800 rounded-[44px] p-8"
             >
               <div className="space-y-4">
                 {/* Badges */}
@@ -464,8 +464,8 @@ function AgendaSection() {
                 <div className="space-y-3">
                   {/* Speaker */}
                   <div className="flex items-center gap-2.5">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                     </svg>
                     <span className="text-base font-medium text-white" style={{ fontFamily: 'Geist, sans-serif' }}>
                       {item.speakers.map(speaker => speaker.name).join(', ')}
@@ -474,7 +474,7 @@ function AgendaSection() {
 
                   {/* Date & Time */}
                   <div className="flex items-center gap-2.5">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                       <circle cx="12" cy="12" r="10"/>
                       <polyline points="12,6 12,12 16,14"/>
                     </svg>
@@ -485,7 +485,7 @@ function AgendaSection() {
 
                   {/* Location */}
                   <div className="flex items-center gap-2.5">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                       <circle cx="12" cy="10" r="3"/>
                     </svg>
@@ -516,8 +516,8 @@ function AgendaSection() {
                           className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm inline-flex items-center gap-2"
                         >
                           Join via SG-Teams
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
                         </a>
                       ) : null
@@ -556,13 +556,15 @@ function AgendaSection() {
         
         {/* Week Tabs */}
         <Tabs defaultValue="week1" className="mb-8">
-          <div className="overflow-x-auto sm:overflow-x-visible mb-8 scrollbar-hide">
-            <TabsList className="h-12 bg-transparent gap-2 p-0 w-fit flex">
-              <TabsTrigger value="week1" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 1</TabsTrigger>
-              <TabsTrigger value="week2" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 2</TabsTrigger>
-              <TabsTrigger value="week3" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 3</TabsTrigger>
-              <TabsTrigger value="week4" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 4</TabsTrigger>
-              <TabsTrigger value="week5" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 5</TabsTrigger>
+          <div className="overflow-x-auto sm:overflow-x-visible mb-8 scrollbar-hide relative">
+            {/* Full width bottom border */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-600"></div>
+            <TabsList className="h-12 bg-transparent gap-4 sm:gap-8 p-0 w-fit flex rounded-none relative">
+              <TabsTrigger value="week1" className="relative h-12 px-4 bg-transparent border-0 rounded-none text-white data-[state=active]:bg-transparent data-[state=active]:text-white hover:text-pink-300 text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-colors duration-200 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-pink-400 data-[state=active]:after:content-['']">Week 01</TabsTrigger>
+              <TabsTrigger value="week2" className="relative h-12 px-4 bg-transparent border-0 rounded-none text-white data-[state=active]:bg-transparent data-[state=active]:text-white hover:text-pink-300 text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-colors duration-200 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-pink-400 data-[state=active]:after:content-['']">Week 02</TabsTrigger>
+              <TabsTrigger value="week3" className="relative h-12 px-4 bg-transparent border-0 rounded-none text-white data-[state=active]:bg-transparent data-[state=active]:text-white hover:text-pink-300 text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-colors duration-200 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-pink-400 data-[state=active]:after:content-['']">Week 03</TabsTrigger>
+              <TabsTrigger value="week4" className="relative h-12 px-4 bg-transparent border-0 rounded-none text-white data-[state=active]:bg-transparent data-[state=active]:text-white hover:text-pink-300 text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-colors duration-200 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-pink-400 data-[state=active]:after:content-['']">Week 04</TabsTrigger>
+              <TabsTrigger value="week5" className="relative h-12 px-4 bg-transparent border-0 rounded-none text-white data-[state=active]:bg-transparent data-[state=active]:text-white hover:text-pink-300 text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-colors duration-200 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-pink-400 data-[state=active]:after:content-['']">Week 05</TabsTrigger>
             </TabsList>
           </div>
           

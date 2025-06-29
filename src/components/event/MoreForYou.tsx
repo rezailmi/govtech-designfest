@@ -1,10 +1,21 @@
+import Image from "next/image"
+
 export default function MoreForYou() {
   return (
-    <section className="relative py-16 px-6 md:px-12 lg:px-16" style={{ backgroundColor: '#e2ff27' }}>
-      <div className="max-w-[1440px] mx-auto">
-        <h2 className="font-geist-mono font-bold text-[32px] md:text-[52px] text-[#080c1b] text-center tracking-[-2.08px] leading-[0.9] mb-12">
-          More for you
-        </h2>
+    <section className="relative py-24 px-6" style={{ backgroundColor: '#e2ff27' }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center mb-8">
+          <Image
+            src="/assets/icons/star-1.svg"
+            alt="Star Icon"
+            width={40}
+            height={40}
+            className="mr-3 flex-shrink-0"
+          />
+          <h2 className="text-4xl lg:text-5xl font-bold text-black leading-none">
+            More for you
+          </h2>
+        </div>
         
         <div className="grid md:grid-cols-2 gap-6">
           {/* Service Design Week Card */}

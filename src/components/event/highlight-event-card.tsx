@@ -35,8 +35,8 @@ export function HighlightEventCard({ event }: HighlightEventCardProps) {
       <div className="space-y-3">
         {/* Speaker */}
         <div className="flex items-center gap-2.5">
-          <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
           </svg>
           <span className="text-base font-medium text-black" style={{ fontFamily: 'Geist, sans-serif' }}>
             {event.speakers}
@@ -45,7 +45,7 @@ export function HighlightEventCard({ event }: HighlightEventCardProps) {
 
         {/* Date & Time */}
         <div className="flex items-center gap-2.5">
-          <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
             <circle cx="12" cy="12" r="10"/>
             <polyline points="12,6 12,12 16,14"/>
           </svg>
@@ -56,7 +56,7 @@ export function HighlightEventCard({ event }: HighlightEventCardProps) {
 
         {/* Location */}
         <div className="flex items-center gap-2.5">
-          <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
@@ -71,7 +71,7 @@ export function HighlightEventCard({ event }: HighlightEventCardProps) {
         {/* Fully Booked Status */}
         {event.fullyBooked && (
           <div className="flex items-center gap-2.5">
-            <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
               <circle cx="12" cy="12" r="10"/>
               <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
             </svg>
