@@ -3,9 +3,10 @@ import { HighlightEventCard } from "./highlight-event-card"
 
 interface HighlightSlideProps {
   slide: HighlightSlide
+  onViewDetails?: (title: string) => void
 }
 
-export function HighlightSlideComponent({ slide }: HighlightSlideProps) {
+export function HighlightSlideComponent({ slide, onViewDetails }: HighlightSlideProps) {
   return (
     <div className="w-full flex-shrink-0 px-6">
       <div className="max-w-7xl mx-auto">
@@ -16,7 +17,7 @@ export function HighlightSlideComponent({ slide }: HighlightSlideProps) {
       <div className="space-y-12">
         {slide.events.map((event, index) => (
           <div key={event.id}>
-            <HighlightEventCard event={event} />
+            <HighlightEventCard event={event} onViewDetails={onViewDetails} />
             
             {/* Separator Line - only if not the last event */}
             {index < slide.events.length - 1 && (

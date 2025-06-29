@@ -1,10 +1,12 @@
 import { HighlightEvent } from "@/data/highlights"
+import { Info } from "lucide-react"
 
 interface HighlightEventCardProps {
   event: HighlightEvent
+  onViewDetails?: (title: string) => void
 }
 
-export function HighlightEventCard({ event }: HighlightEventCardProps) {
+export function HighlightEventCard({ event, onViewDetails }: HighlightEventCardProps) {
   return (
     <div className="space-y-4">
       {/* Badges */}
@@ -68,7 +70,7 @@ export function HighlightEventCard({ event }: HighlightEventCardProps) {
           </span>
         </div>
 
-        {/* Fully Booked Status */}
+        {/* Booking Status */}
         {event.fullyBooked && (
           <div className="flex items-center gap-2.5">
             <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
@@ -80,6 +82,25 @@ export function HighlightEventCard({ event }: HighlightEventCardProps) {
             </span>
           </div>
         )}
+        {event.almostFull && (
+          <div className="flex items-center gap-2.5">
+            <Info className="w-5 h-5 text-black" />
+            <span className="text-base font-bold text-black" style={{ fontFamily: 'Geist, sans-serif' }}>
+              Almost full
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Action Button */}
+      <div className="mt-6">
+        <button 
+          onClick={() => onViewDetails?.(event.title)}
+          className="border border-black text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm"
+          style={{ fontFamily: 'Geist, sans-serif' }}
+        >
+          View details
+        </button>
       </div>
     </div>
   )

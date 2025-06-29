@@ -198,9 +198,9 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               <div className="flex justify-end">
                 <button
                   onClick={onClose}
-                  className="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg transition-colors"
+                  className="px-6 py-2 border border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white font-semibold rounded-lg transition-colors"
                 >
-                  Close
+                  Done
                 </button>
               </div>
             </div>

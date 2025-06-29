@@ -13,6 +13,7 @@ export interface HighlightEvent {
   location: string
   locationDetails?: string
   fullyBooked?: boolean
+  almostFull?: boolean
 }
 
 export interface HighlightSlide {
@@ -70,13 +71,14 @@ function transformToHighlightEvent(item: AgendaItem, index: number): HighlightEv
     time: item.time,
     location: item.location,
     locationDetails: item.locationDetails,
-    // Mark all items as fully booked except Visual Facilitation Lab
-    fullyBooked: item.title !== 'Visual Facilitation Lab'
+    // Mark all items as fully booked except Visual Facilitation Lab (which is almost full)
+    fullyBooked: item.title !== 'Visual Facilitation Lab',
+    almostFull: item.title === 'Visual Facilitation Lab'
   }
 }
 
 // Helper function to split items into chunks with widow prevention
-function chunkItems<T>(items: T[], maxPerChunk: number = 3): T[][] {
+function chunkItems<T>(items: T[], maxPerChunk: number = 2): T[][] {
   if (items.length === 0) return []
   if (items.length <= maxPerChunk) return [items]
   
@@ -120,13 +122,13 @@ function generateHighlightSlides(): HighlightSlide[] {
     return aDate.getTime() - bDate.getTime()
   })
   
-  // Split into chunks of maximum 3 items
-  const chunks = chunkItems(sortedItems, 3)
+  // Split into chunks of maximum 2 items
+  const chunks = chunkItems(sortedItems, 2)
   
   const slides: HighlightSlide[] = []
   let eventIdCounter = 1
   
-  // Create slides with sorted content (maximum 3 items per slide)
+  // Create slides with sorted content (maximum 2 items per slide)
   chunks.forEach((chunk, chunkIndex) => {
     slides.push({
       id: `highlights-slide-${chunkIndex + 1}`,

@@ -1,6 +1,8 @@
 "use client"
 
 import { HighlightsCarousel, HighlightsCarouselRef } from "./highlights-carousel"
+import { EventDetailModal } from "@/components/agenda/event-detail-modal"
+import { getEventDetailsByTitle, type EventDetail } from "@/data/event-details"
 import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
 
@@ -10,6 +12,19 @@ export function HighlightsSection() {
     canGoPrev: false,
     canGoNext: true
   })
+  const [selectedEvent, setSelectedEvent] = useState<EventDetail | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleViewDetails = (title: string) => {
+    const eventDetail = getEventDetailsByTitle(title)
+    setSelectedEvent(eventDetail)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedEvent(null)
+  }
 
   // Update navigation state when carousel changes
   useEffect(() => {
@@ -87,7 +102,14 @@ export function HighlightsSection() {
         </div>
       </div>
       
-      <HighlightsCarousel ref={carouselRef} />
+      <HighlightsCarousel ref={carouselRef} onViewDetails={handleViewDetails} />
+      
+      {/* Event Detail Modal */}
+      <EventDetailModal 
+        event={selectedEvent}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </section>
   )
 }

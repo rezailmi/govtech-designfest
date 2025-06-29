@@ -3,9 +3,10 @@ import { Keynote } from "@/data/keynotes"
 
 interface KeynoteCardProps {
   keynote: Keynote
+  onViewDetails?: (title: string) => void
 }
 
-export function KeynoteCard({ keynote }: KeynoteCardProps) {
+export function KeynoteCard({ keynote, onViewDetails }: KeynoteCardProps) {
   const themeColors = {
     pink: 'bg-[#FF4DC3]',
     blue: 'bg-[#4D8EFF]'
@@ -64,7 +65,10 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
                   </svg>
                 </a>
               )}
-              <button className="border border-black text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm">
+              <button 
+                onClick={() => onViewDetails?.(keynote.title)}
+                className="border border-black text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm"
+              >
                 View details
               </button>
             </div>

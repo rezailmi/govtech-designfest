@@ -13,7 +13,11 @@ export interface HighlightsCarouselRef {
   canGoPrev: boolean
 }
 
-export const HighlightsCarousel = forwardRef<HighlightsCarouselRef>((props, ref) => {
+interface HighlightsCarouselProps {
+  onViewDetails?: (title: string) => void
+}
+
+export const HighlightsCarousel = forwardRef<HighlightsCarouselRef, HighlightsCarouselProps>(({ onViewDetails }, ref) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const totalSlides = highlightSlides.length
   
@@ -89,7 +93,7 @@ export const HighlightsCarousel = forwardRef<HighlightsCarouselRef>((props, ref)
           }}
         >
           {highlightSlides.map((slide) => (
-            <HighlightSlideComponent key={slide.id} slide={slide} />
+            <HighlightSlideComponent key={slide.id} slide={slide} onViewDetails={onViewDetails} />
           ))}
         </div>
       </div>
