@@ -96,8 +96,8 @@ export const keynotes: Keynote[] = [
     speakers: [
       {
         name: 'Ruby Pryor',
-        title: 'Senior Design Researcher',
-        organization: 'GovTech Singapore',
+        title: 'Founder',
+        organization: 'Rex',
         image: '/assets/images/speaker-ruby.png'
       }
     ],

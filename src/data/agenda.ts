@@ -167,8 +167,7 @@ export const agendaItems: AgendaItem[] = [
     title: 'Prototyping with AI and moderated concept testing',
     topics: ['Course', 'In-Person', 'Build Craft'],
     speakers: [
-      { name: 'Rex', role: 'Instructor', company: 'GovTech Singapore' },
-      { name: 'Ruby Pryor', role: 'Instructor', company: 'GovTech Singapore' }
+      { name: 'Ruby Pryor', role: 'Founder', company: 'Rex' }
     ],
     location: 'In-Person'
   },

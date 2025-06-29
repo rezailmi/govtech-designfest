@@ -1,3 +1,5 @@
+import { agendaItems, type AgendaItem } from './agenda'
+
 export interface HighlightEvent {
   id: string
   badges: Array<{
@@ -17,100 +19,115 @@ export interface HighlightSlide {
   events: HighlightEvent[]
 }
 
-export const highlightSlides: HighlightSlide[] = [
-  {
-    id: 'slide-1',
-    events: [
-      {
-        id: 'event-1',
-        badges: [
-          { text: 'Keynote', variant: 'keynote' },
-          { text: 'In-person', variant: 'outlined' },
-          { text: 'Get swag', variant: 'outlined' }
-        ],
-        title: 'Ctrl + Alt + Design Workshop',
-        speakers: 'MOS Jasmin, ACE Bernard',
-        date: '03 Jul 2025',
-        time: '11:30 AM',
-        location: 'MBC 10, Level 10 (The Big Place)',
-        soldOut: true
-      },
-      {
-        id: 'event-2',
-        badges: [
-          { text: 'Keynote', variant: 'keynote' },
-          { text: 'In-person', variant: 'outlined' },
-          { text: 'Get swag', variant: 'outlined' }
-        ],
-        title: 'Closing Session',
-        speakers: 'Joy Ng, Amanda Yip, Eyung Lim, Shalom Lim',
-        date: '31 Jul 2025',
-        time: '2:30 PM',
-        location: 'MBC 10, Level 10 (The Big Place)'
-      }
-    ]
-  },
-  {
-    id: 'slide-2',
-    events: [
-      {
-        id: 'event-3',
-        badges: [
-          { text: 'Keynote', variant: 'keynote' },
-          { text: 'Online', variant: 'outlined' },
-          { text: 'Build Craft', variant: 'outlined' }
-        ],
-        title: 'Fireside Chat with 2PS and Lillian Shieh',
-        speakers: '2PS Augustin, Lillian Shieh',
-        date: '07 Jul 2025',
-        time: '11:30 AM',
-        location: 'In-Person'
-      },
-      {
-        id: 'event-4',
-        badges: [
-          { text: 'Design craft', variant: 'keynote' },
-          { text: 'In-person', variant: 'outlined' },
-          { text: 'Course', variant: 'outlined' }
-        ],
-        title: 'Data Storytelling',
-        speakers: 'Kontinentalist Team',
-        date: '08 Jul 2025',
-        time: '9:30 AM',
-        location: 'In-Person'
-      }
-    ]
-  },
-  {
-    id: 'slide-3',
-    events: [
-      {
-        id: 'event-5',
-        badges: [
-          { text: 'Design craft', variant: 'keynote' },
-          { text: 'In-person', variant: 'outlined' },
-          { text: 'Workshop', variant: 'outlined' }
-        ],
-        title: 'Visual Facilitation Lab',
-        speakers: 'Art of Awakening Team',
-        date: '11 Jul 2025',
-        time: '9:00 AM',
-        location: 'In-Person',
-        soldOut: true
-      },
-      {
-        id: 'event-6',
-        badges: [
-          { text: 'Keynote', variant: 'keynote' },
-          { text: 'Online', variant: 'outlined' },
-          { text: 'Talk', variant: 'outlined' }
-        ],
-        title: 'Flourishing at All Levels of the System',
-        speakers: 'Dr Douglas O\'Loughlin',
-        date: '14 Jul 2025',
-        time: '12:00 PM',
-        location: 'Online'
-      }
-    ]
+// Filter agenda items for workshops and courses
+function getWorkshopsAndCourses(): AgendaItem[] {
+  return agendaItems.filter(item => 
+    item.topics.some(topic => 
+      topic.toLowerCase() === 'workshop' || topic.toLowerCase() === 'course'
+    )
+  )
+}
+
+// Transform agenda item to highlight event format
+function transformToHighlightEvent(item: AgendaItem, index: number): HighlightEvent {
+  const badges: Array<{ text: string; variant: 'keynote' | 'outlined' }> = []
+  
+  // Add content type badge
+  if (item.topics.some(topic => topic.toLowerCase() === 'course')) {
+    badges.push({ text: 'Course', variant: 'keynote' })
+  } else if (item.topics.some(topic => topic.toLowerCase() === 'workshop')) {
+    badges.push({ text: 'Workshop', variant: 'keynote' })
   }
-]
+  
+  // Add location badge
+  if (item.location === 'In-Person') {
+    badges.push({ text: 'In-person', variant: 'outlined' })
+  } else if (item.location === 'Online') {
+    badges.push({ text: 'Online', variant: 'outlined' })
+  }
+  
+  // Add special feature badges
+  if (item.topics.includes('Got Food')) {
+    badges.push({ text: 'Got Food', variant: 'outlined' })
+  }
+  if (item.topics.includes('Get Swag')) {
+    badges.push({ text: 'Get swag', variant: 'outlined' })
+  }
+  if (item.topics.includes('Build Craft')) {
+    badges.push({ text: 'Build Craft', variant: 'outlined' })
+  }
+  if (item.topics.includes('Build Self')) {
+    badges.push({ text: 'Build Self', variant: 'outlined' })
+  }
+  
+  return {
+    id: `event-${index + 1}`,
+    badges,
+    title: item.title,
+    speakers: item.speakers.map(speaker => speaker.name).join(', '),
+    date: item.date,
+    time: item.time,
+    location: item.location,
+    // Mark Visual Facilitation Lab as sold out (based on original data)
+    soldOut: item.title === 'Visual Facilitation Lab'
+  }
+}
+
+// Helper function to split items into chunks of maximum 2 items
+function chunkItems<T>(items: T[], maxPerChunk: number = 2): T[][] {
+  const chunks: T[][] = []
+  for (let i = 0; i < items.length; i += maxPerChunk) {
+    chunks.push(items.slice(i, i + maxPerChunk))
+  }
+  return chunks
+}
+
+// Generate highlight slides grouped by content type
+function generateHighlightSlides(): HighlightSlide[] {
+  const workshopsAndCourses = getWorkshopsAndCourses()
+  
+  // Separate courses and workshops
+  const courses = workshopsAndCourses.filter(item => 
+    item.topics.some(topic => topic.toLowerCase() === 'course')
+  )
+  const workshops = workshopsAndCourses.filter(item => 
+    item.topics.some(topic => topic.toLowerCase() === 'workshop')
+  )
+  
+  const slides: HighlightSlide[] = []
+  let eventIdCounter = 1
+  
+  // Create course slides (maximum 2 items per slide)
+  if (courses.length > 0) {
+    const courseChunks = chunkItems(courses, 2)
+    courseChunks.forEach((chunk, chunkIndex) => {
+      slides.push({
+        id: `courses-slide-${chunkIndex + 1}`,
+        events: chunk.map((course) => {
+          const event = transformToHighlightEvent(course, eventIdCounter - 1)
+          eventIdCounter++
+          return event
+        })
+      })
+    })
+  }
+  
+  // Create workshop slides (maximum 2 items per slide)
+  if (workshops.length > 0) {
+    const workshopChunks = chunkItems(workshops, 2)
+    workshopChunks.forEach((chunk, chunkIndex) => {
+      slides.push({
+        id: `workshops-slide-${chunkIndex + 1}`,
+        events: chunk.map((workshop) => {
+          const event = transformToHighlightEvent(workshop, eventIdCounter - 1)
+          eventIdCounter++
+          return event
+        })
+      })
+    })
+  }
+  
+  return slides
+}
+
+export const highlightSlides: HighlightSlide[] = generateHighlightSlides()
