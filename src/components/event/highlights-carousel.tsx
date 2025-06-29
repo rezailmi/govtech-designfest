@@ -97,3 +97,5 @@ export const HighlightsCarousel = forwardRef<HighlightsCarouselRef>((props, ref)
     </div>
   )
 })
+
+HighlightsCarousel.displayName = 'HighlightsCarousel'
