@@ -490,11 +490,43 @@ function AgendaSection() {
                       <circle cx="12" cy="10" r="3"/>
                     </svg>
                     <span className="text-base font-medium text-white" style={{ fontFamily: 'Geist, sans-serif' }}>
-                      {item.locationDetails && item.location === 'In-Person' 
-                        ? `${item.locationDetails}`
-                        : item.location
+                      {item.location === 'Online' 
+                        ? 'Online'
+                        : `In person${item.locationDetails ? ` (${item.locationDetails})` : ''}`
                       }
                     </span>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {/* Join button for online sessions */}
+                    {item.location === 'Online' && (() => {
+                      let joinUrl = ''
+                      if (item.time.includes('12:00 PM')) {
+                        joinUrl = 'https://go.gov.sg/designfestival-talk12pm'
+                      } else if (item.time.includes('1:00 PM')) {
+                        joinUrl = 'https://go.gov.sg/designfestival-talk1pm'
+                      }
+                      
+                      return joinUrl ? (
+                        <a 
+                          href={joinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm inline-flex items-center gap-2"
+                        >
+                          Join via SG-Teams
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      ) : null
+                    })()}
+                    
+                    {/* View details button for all items */}
+                    <button className="border border-gray-400 text-gray-300 px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-700 hover:border-gray-300 transition-colors text-sm">
+                      View details
+                    </button>
                   </div>
                 </div>
               </div>

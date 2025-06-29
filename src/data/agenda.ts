@@ -129,7 +129,7 @@ export const agendaItems: AgendaItem[] = [
     time: '12:00 PM',
     title: 'Measuring design value with a numbers prototype',
     topics: ['Talk', 'Online', 'Build Craft'],
-    speakers: [{ name: 'Design Specialist', role: 'Senior Analyst', company: 'GovTech Singapore' }],
+    speakers: [{ name: 'Derrick Ng', role: 'Speaker', company: 'GovTech Singapore' }],
     location: 'Online'
   },
   {
@@ -139,7 +139,10 @@ export const agendaItems: AgendaItem[] = [
     time: '11:30 AM',
     title: 'Fireside chat: Why isn\'t empathy enough?',
     topics: ['In-Person', 'Keynote', 'Talk'],
-    speakers: [{ name: 'Keynote Speaker', role: 'Design Leader', company: 'GovTech Singapore' }],
+    speakers: [
+      { name: 'MOS Jasmin', role: 'Minister of State', company: 'GovTech Singapore' },
+      { name: 'ACE Bernard', role: 'Assistant Chief Executive', company: 'GovTech Singapore' }
+    ],
     location: 'In-Person',
     locationDetails: 'MBC 10 - Level 10 (The Big Place)'
   },
