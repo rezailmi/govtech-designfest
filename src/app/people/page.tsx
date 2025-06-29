@@ -111,9 +111,11 @@ export default function PeoplePage() {
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-medium text-white mb-4">
-              Meet the {volunteers.length} volunteers who made GovTech&apos;s first Design Festival possible.
-            </h1>
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-3xl font-medium text-white mb-4">
+                Deepest thanks to the passionate team of 39 volunteers who brought the Festival to life.
+              </h1>
+            </div>
           </div>
           
           {/* Volunteers List - Movie Credits Style */}
@@ -122,6 +124,15 @@ export default function PeoplePage() {
               {volunteers.map((name) => (
                 <VolunteerName key={name} name={name} />
               ))}
+            </div>
+          </div>
+          
+          {/* Special Shoutout */}
+          <div className="text-center mb-16">
+            <div className="max-w-4xl mx-auto">
+              <p className="text-xl font-medium text-white">
+                Special shoutout to Alicia and Immanuel from the Design Practice for leading the charge with heart and grace, to Edwin for the vibrant brand graphics, and to Wondo and Reza for their generosity and magic in bringing the site to life at the eleventh hour.
+              </p>
             </div>
           </div>
           

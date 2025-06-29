@@ -7,23 +7,7 @@ import Image from "next/image"
 export function Footer() {
   return (
     <footer className="bg-black text-white">
-      {/* CTA Section */}
-      <div className="bg-black py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-medium mb-4 leading-tight">
-            Are you excited for a month filled with<br />
-            engaging events and learning opportunities?
-          </h2>
-          <p className="text-xl lg:text-2xl mb-8">
-            Don&apos;t miss out—register now!
-          </p>
-          <Button asChild className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-lg font-medium rounded-md">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" target="_blank" rel="noopener noreferrer">
-              Register
-            </a>
-          </Button>
-        </div>
-      </div>
+
 
       {/* Main Footer */}
       <div className="pt-16 px-6">
