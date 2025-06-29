@@ -9,12 +9,12 @@ export default function MoreForYou() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Service Design Week Card */}
           <div className="rounded-[44px] p-8" style={{ backgroundColor: '#cceb05' }}>
-            <h3 className="font-inter font-extrabold text-[36px] md:text-[48px] text-black leading-[48px] tracking-[-0.576px] mb-11">
+            <h3 className="font-geist font-extrabold text-[36px] md:text-[48px] text-black leading-[48px] tracking-[-0.576px] mb-11">
               Service Design Week
             </h3>
             
             <div className="space-y-6">
-              <p className="font-inter font-semibold text-lg md:text-2xl text-black leading-[32px] tracking-[-0.144px]">
+              <p className="font-geist font-semibold text-lg md:text-2xl text-black leading-[32px] tracking-[-0.144px]">
                 Explore how service design shapes seamless, human-centered experiences across industries. Join talks, workshops, and behind-the-scenes journeys that reveal how systems, touchpoints, and people connect to create meaningful impact.
               </p>
               
@@ -31,12 +31,12 @@ export default function MoreForYou() {
           
           {/* Inclusive Design Week Card */}
           <div className="rounded-[44px] p-8" style={{ backgroundColor: '#cceb05' }}>
-            <h3 className="font-inter font-extrabold text-[36px] md:text-[48px] text-black leading-[48px] tracking-[-0.576px] mb-11">
+            <h3 className="font-geist font-extrabold text-[36px] md:text-[48px] text-black leading-[48px] tracking-[-0.576px] mb-11">
               Inclusive Design Week
             </h3>
             
             <div className="space-y-6">
-              <p className="font-inter font-semibold text-lg md:text-2xl text-black leading-[32px] tracking-[-0.144px]">
+              <p className="font-geist font-semibold text-lg md:text-2xl text-black leading-[32px] tracking-[-0.144px]">
                 Designing for diversity means designing for everyone. Inclusive Design Week spotlights practices, perspectives, and projects that remove barriers and expand access—online and offline—for all abilities, backgrounds, and communities.
               </p>
               

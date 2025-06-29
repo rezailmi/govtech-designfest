@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarqueeTicker } from "@/components/ui/marquee-ticker"
 import { KeynoteList } from "@/components/keynote/keynote-list"
 import MoreForYou from "@/components/event/MoreForYou"
+import { HighlightsSection } from "@/components/event/highlights-section"
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 
@@ -360,6 +361,9 @@ export default function Home() {
           <KeynoteList />
         </div>
       </section>
+
+      {/* Highlights Section */}
+      <HighlightsSection />
 
       {/* Full Agenda Section */}
       <AgendaSection />
@@ -987,7 +991,7 @@ function AgendaSection() {
           <div key={dateKey} className="space-y-4">
             {/* Day Section Title */}
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-700">{dateKey}</h3>
+              <h3 className="text-lg font-semibold text-gray-300">{dateKey}</h3>
         </div>
 
             {/* Items for this day */}
@@ -995,15 +999,15 @@ function AgendaSection() {
               {items.map((item, index) => (
             <div 
               key={index} 
-              className="group bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-300 ease-in-out hover:-translate-y-1"
+              className="group bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700 hover:shadow-lg hover:border-gray-600 transition-all duration-300 ease-in-out hover:-translate-y-1"
             >
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-sm text-gray-600 font-medium">{item.time}</span>
+                    <span className="text-sm text-gray-400 font-medium">{item.time}</span>
                   </div>
                   
-                      <h4 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-black transition-colors">
+                      <h4 className="text-xl font-bold mb-4 text-white group-hover:text-gray-100 transition-colors">
                     {item.title}
                       </h4>
                   
@@ -1018,7 +1022,7 @@ function AgendaSection() {
                     {item.topics.map((topic, topicIndex) => (
                       <span 
                         key={topicIndex} 
-                        className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                        className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-700 text-gray-300 hover:bg-gray-600 transition-colors"
                       >
                         {topic}
                       </span>
@@ -1027,23 +1031,23 @@ function AgendaSection() {
 
                   <div className="space-y-3">
                     {item.speakers.map((speaker, speakerIndex) => (
-                      <div key={speakerIndex} className="border-l-4 border-gray-200 pl-4 group-hover:border-gray-400 transition-colors">
-                        <div className="font-semibold text-gray-900">{speaker.name}</div>
-                        <div className="text-sm text-gray-600">{speaker.role}</div>
-                        <div className="text-sm text-gray-500">{speaker.company}</div>
+                      <div key={speakerIndex} className="border-l-4 border-gray-600 pl-4 group-hover:border-gray-500 transition-colors">
+                        <div className="font-semibold text-white">{speaker.name}</div>
+                        <div className="text-sm text-gray-300">{speaker.role}</div>
+                        <div className="text-sm text-gray-400">{speaker.company}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div className="lg:text-right flex flex-col items-end gap-3">
-                  <div className="text-sm text-gray-500 bg-gray-50 px-3 py-1 rounded-lg font-medium">
+                  <div className="text-sm text-gray-300 bg-gray-700 px-3 py-1 rounded-lg font-medium">
                     {item.location}
                   </div>
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="hover:bg-black hover:text-white hover:border-black transition-all duration-200 font-medium"
+                    className="border-gray-600 text-gray-300 hover:bg-white hover:text-black hover:border-white transition-all duration-200 font-medium"
                   >
                     View Details
                   </Button>
@@ -1059,7 +1063,7 @@ function AgendaSection() {
   }
 
   return (
-    <section id="agenda" className="bg-gray-50 py-24 px-6">
+    <section id="agenda" style={{ backgroundColor: '#080c1b' }} className="pt-12 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center mb-8">
           <Image
@@ -1068,19 +1072,20 @@ function AgendaSection() {
             width={40}
             height={40}
             className="mr-3 flex-shrink-0"
+            style={{ filter: 'invert(1)' }}
           />
-          <h2 className="text-4xl lg:text-5xl font-bold text-black leading-none">Agenda</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-none">Agenda</h2>
         </div>
         
         {/* Week Tabs */}
         <div className="mb-8 -mx-6 px-6 overflow-x-auto scrollbar-hide">
           <Tabs defaultValue="week1">
             <TabsList className="h-12 bg-transparent gap-2 p-0 w-fit min-w-full flex">
-              <TabsTrigger value="week1" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 1</TabsTrigger>
-              <TabsTrigger value="week2" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 2</TabsTrigger>
-              <TabsTrigger value="week3" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 3</TabsTrigger>
-              <TabsTrigger value="week4" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 4</TabsTrigger>
-              <TabsTrigger value="week5" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 5</TabsTrigger>
+              <TabsTrigger value="week1" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 1</TabsTrigger>
+              <TabsTrigger value="week2" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 2</TabsTrigger>
+              <TabsTrigger value="week3" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 3</TabsTrigger>
+              <TabsTrigger value="week4" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 4</TabsTrigger>
+              <TabsTrigger value="week5" className="data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:border-white data-[state=inactive]:border data-[state=inactive]:border-gray-500 data-[state=inactive]:text-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 5</TabsTrigger>
             </TabsList>
           
           <TabsContent value="week1" className="mt-8">
