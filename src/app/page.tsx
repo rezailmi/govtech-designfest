@@ -171,11 +171,8 @@ export default function Home() {
               
               {/* Right Navigation - People, Register */}
               <div className="hidden md:flex items-center justify-end gap-8 text-white flex-1">
-                <a href="#people" className="hover:text-pink-300 transition-colors flex items-center" target="_blank" rel="noopener noreferrer">
-                  People 
-                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                <a href="#people" className="hover:text-pink-300 transition-colors" target="_blank" rel="noopener noreferrer">
+                  People
                 </a>
                 <Button asChild className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-lg font-semibold">
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="flex items-center" target="_blank" rel="noopener noreferrer">
@@ -191,11 +188,8 @@ export default function Home() {
               <div className="flex md:hidden items-center justify-between gap-2 text-white text-sm w-full px-2">
                 <button onClick={() => document.getElementById('keynotes')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-pink-300 transition-colors flex-1 text-center">Keynotes</button>
                 <button onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-pink-300 transition-colors flex-1 text-center">Agenda</button>
-                <a href="#people" className="hover:text-pink-300 transition-colors flex items-center justify-center flex-1" target="_blank" rel="noopener noreferrer">
-                  People 
-                  <svg className="ml-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                <a href="#people" className="hover:text-pink-300 transition-colors text-center flex-1" target="_blank" rel="noopener noreferrer">
+                  People
                 </a>
                 <Button asChild className="bg-black text-white hover:bg-gray-800 px-2 py-1.5 rounded-lg font-semibold text-sm flex-1">
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDiP5lcryP4mjwD49vUiuTZWw01ZMgw4ISNpM3kgfYfLCKHA/viewform" className="flex items-center justify-center" target="_blank" rel="noopener noreferrer">
