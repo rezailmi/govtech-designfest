@@ -9,6 +9,8 @@ import { HighlightsSection } from "@/components/event/highlights-section"
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { agendaItems } from "@/data/agenda"
+import { EventDetailModal } from "@/components/agenda/event-detail-modal"
+import { getEventDetailsByTitle, type EventDetail } from "@/data/event-details"
 
 // Draggable Sticker Component
 function DraggableSticker({ 
@@ -372,7 +374,19 @@ export default function Home() {
 
 // Agenda Section Component
 function AgendaSection() {
+  const [selectedEvent, setSelectedEvent] = useState<EventDetail | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const handleViewDetails = (title: string) => {
+    const eventDetail = getEventDetailsByTitle(title)
+    setSelectedEvent(eventDetail)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedEvent(null)
+  }
 
   // Helper function to group items by date
   const groupItemsByDate = (items: typeof agendaItems) => {
@@ -524,7 +538,10 @@ function AgendaSection() {
                     })()}
                     
                     {/* View details button for all items */}
-                    <button className="border border-gray-400 text-gray-300 px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-700 hover:border-gray-300 transition-colors text-sm">
+                    <button 
+                      onClick={() => handleViewDetails(item.title)}
+                      className="border border-gray-400 text-gray-300 px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-700 hover:border-gray-300 transition-colors text-sm"
+                    >
                       View details
                     </button>
                   </div>
@@ -589,6 +606,13 @@ function AgendaSection() {
           </TabsContent>
         </Tabs>
       </div>
+      
+      {/* Event Detail Modal */}
+      <EventDetailModal 
+        event={selectedEvent}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </section>
   )
 }
