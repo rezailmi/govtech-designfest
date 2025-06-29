@@ -1,10 +1,19 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, forwardRef, useImperativeHandle } from "react"
 import { highlightSlides } from "@/data/highlights"
 import { HighlightSlideComponent } from "./highlight-slide"
 
-export function HighlightsCarousel() {
+export interface HighlightsCarouselRef {
+  nextSlide: () => void
+  prevSlide: () => void
+  currentSlide: number
+  totalSlides: number
+  canGoNext: boolean
+  canGoPrev: boolean
+}
+
+export const HighlightsCarousel = forwardRef<HighlightsCarouselRef>((props, ref) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const totalSlides = highlightSlides.length
   
@@ -24,6 +33,16 @@ export function HighlightsCarousel() {
       setCurrentSlide(currentSlide - 1)
     }
   }
+
+  // Expose functions to parent component
+  useImperativeHandle(ref, () => ({
+    nextSlide,
+    prevSlide,
+    currentSlide,
+    totalSlides,
+    canGoNext: currentSlide < totalSlides - 1,
+    canGoPrev: currentSlide > 0
+  }))
 
   // Touch event handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -75,64 +94,6 @@ export function HighlightsCarousel() {
         </div>
       </div>
 
-      {/* Navigation Controls - Bottom Level */}
-      <div className="mt-8 px-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Previous Arrow */}
-        {currentSlide > 0 ? (
-          <button
-            onClick={prevSlide}
-            className="
-              w-12 h-12 rounded-full border-2 border-white bg-transparent flex items-center justify-center
-              transition-all duration-200 hover:bg-white group
-            "
-            aria-label="Previous slide"
-          >
-            <svg className="w-6 h-6 text-white group-hover:text-black transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-        ) : (
-          <div className="w-12 h-12"></div>
-        )}
-
-        {/* Slide Indicators */}
-        <div className="flex space-x-2">
-          {highlightSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`
-                w-3 h-3 rounded-full border-2 border-white transition-all duration-200
-                ${index === currentSlide 
-                  ? 'bg-white' 
-                  : 'bg-transparent hover:bg-white hover:bg-opacity-20'
-                }
-              `}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Next Arrow */}
-        {currentSlide < totalSlides - 1 ? (
-          <button
-            onClick={nextSlide}
-            className="
-              w-12 h-12 rounded-full border-2 border-white bg-transparent flex items-center justify-center
-              transition-all duration-200 hover:bg-white group
-            "
-            aria-label="Next slide"
-          >
-            <svg className="w-6 h-6 text-white group-hover:text-black transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        ) : (
-          <div className="w-12 h-12"></div>
-        )}
-        </div>
-      </div>
     </div>
   )
-}
+})
