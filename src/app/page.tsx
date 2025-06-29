@@ -111,11 +111,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Top Overscroll Background */}
-      <div className="fixed top-0 left-0 right-0 h-screen -z-10" style={{backgroundColor: '#70094E'}} />
-      
-      {/* Bottom Overscroll Background */}
-      <div className="fixed bottom-0 left-0 right-0 h-screen -z-10 bg-black" />
+      {/* Overscroll Background - purple hero color */}
+      <div className="fixed inset-0 -z-10" style={{backgroundColor: '#70094E'}} />
       
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden" style={{backgroundColor: '#70094E'}}>
@@ -266,9 +263,9 @@ export default function Home() {
                 Latest announcements and updates
               </h3>
               
-              <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-base font-medium rounded-md">
+              <button className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm">
                 Join Slack channel
-              </Button>
+              </button>
             </div>
 
             {/* Save Your Spot CTA */}
@@ -285,12 +282,12 @@ export default function Home() {
               </div>
               
               <h3 className="text-white text-lg lg:text-xl font-semibold mb-6 leading-tight min-h-[3rem] flex items-center justify-center">
-                Reservation sessions
+                Register now to secure your spot
               </h3>
               
-              <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-base font-medium rounded-md">
+              <button className="bg-white text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm">
                 Register
-              </Button>
+              </button>
             </div>
 
           </div>
@@ -1019,14 +1016,14 @@ function AgendaSection() {
         <h2 className="text-4xl lg:text-5xl font-bold mb-8">Agenda</h2>
         
         {/* Week Tabs */}
-        <div className="mb-8">
+        <div className="mb-8 -mx-6 px-6 overflow-x-auto scrollbar-hide">
           <Tabs defaultValue="week1">
-            <TabsList className="h-12 bg-transparent gap-2 p-0">
-              <TabsTrigger value="week1" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 1</TabsTrigger>
-              <TabsTrigger value="week2" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 2</TabsTrigger>
-              <TabsTrigger value="week3" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 3</TabsTrigger>
-              <TabsTrigger value="week4" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 4</TabsTrigger>
-              <TabsTrigger value="week5" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-6 text-base font-medium cursor-pointer">Week 5</TabsTrigger>
+            <TabsList className="h-12 bg-transparent gap-2 p-0 w-fit min-w-full flex">
+              <TabsTrigger value="week1" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 1</TabsTrigger>
+              <TabsTrigger value="week2" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 2</TabsTrigger>
+              <TabsTrigger value="week3" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 3</TabsTrigger>
+              <TabsTrigger value="week4" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 4</TabsTrigger>
+              <TabsTrigger value="week5" className="data-[state=active]:bg-black data-[state=active]:text-white data-[state=active]:border-black data-[state=inactive]:border data-[state=inactive]:border-gray-300 h-10 px-3 sm:px-6 text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap flex-shrink-0">Week 5</TabsTrigger>
             </TabsList>
           
           <TabsContent value="week1" className="mt-8">
