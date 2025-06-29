@@ -12,7 +12,7 @@ export function KeynoteCard({ keynote }: KeynoteCardProps) {
   }
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
+    <div className="bg-white rounded-2xl overflow-hidden">
       <div className="flex flex-col lg:flex-row">
         {/* Left side - Session Info */}
         <div className="flex-1 p-6 lg:p-8">

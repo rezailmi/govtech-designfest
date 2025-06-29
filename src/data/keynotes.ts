@@ -20,7 +20,7 @@ export interface Keynote {
 export const keynotes: Keynote[] = [
   {
     id: 'festival-opening',
-    title: 'Festival Opening (feat. Shiao-Yin & DCE Sau Sheong)',
+    title: 'Festival Opening (feat. DCE Sau Sheong & Shiao-Yin)',
     date: '01 Jul 2025',
     time: '10:30 AM → 11:30 AM',
     location: 'MBC 10 - Level 10 (The Big Place)',

@@ -14,7 +14,6 @@ export function HighlightsSection() {
               width={40}
               height={40}
               className="mr-3 flex-shrink-0"
-              style={{ filter: 'invert(1)' }}
             />
             <h2 className="text-4xl lg:text-5xl font-bold text-white leading-none" style={{ fontFamily: 'Geist, sans-serif' }}>
               Highlights

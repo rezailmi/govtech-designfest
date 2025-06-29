@@ -62,13 +62,24 @@ export function HighlightEventCard({ event }: HighlightEventCardProps) {
           </svg>
           <span className="text-base font-medium text-black" style={{ fontFamily: 'Geist, sans-serif' }}>
             {event.location}
+            {event.locationDetails && event.location === 'In-Person' && (
+              <span> ({event.locationDetails})</span>
+            )}
           </span>
-          {event.soldOut && (
-            <span className="ml-2 px-2 py-0.5 bg-red-500 text-white text-xs font-semibold rounded-md" style={{ fontFamily: 'Geist, sans-serif' }}>
-              SOLD OUT
-            </span>
-          )}
         </div>
+
+        {/* Fully Booked Status */}
+        {event.fullyBooked && (
+          <div className="flex items-center gap-2.5">
+            <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+            </svg>
+            <span className="text-base font-bold text-black" style={{ fontFamily: 'Geist, sans-serif' }}>
+              Fully booked
+            </span>
+          </div>
+        )}
       </div>
     </div>
   )

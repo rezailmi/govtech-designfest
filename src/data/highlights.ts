@@ -11,7 +11,8 @@ export interface HighlightEvent {
   date: string
   time: string
   location: string
-  soldOut?: boolean
+  locationDetails?: string
+  fullyBooked?: boolean
 }
 
 export interface HighlightSlide {
@@ -68,64 +69,74 @@ function transformToHighlightEvent(item: AgendaItem, index: number): HighlightEv
     date: item.date,
     time: item.time,
     location: item.location,
-    // Mark Visual Facilitation Lab as sold out (based on original data)
-    soldOut: item.title === 'Visual Facilitation Lab'
+    locationDetails: item.locationDetails,
+    // Mark all items as fully booked except Visual Facilitation Lab
+    fullyBooked: item.title !== 'Visual Facilitation Lab'
   }
 }
 
-// Helper function to split items into chunks of maximum 2 items
-function chunkItems<T>(items: T[], maxPerChunk: number = 2): T[][] {
+// Helper function to split items into chunks with widow prevention
+function chunkItems<T>(items: T[], maxPerChunk: number = 3): T[][] {
+  if (items.length === 0) return []
+  if (items.length <= maxPerChunk) return [items]
+  
   const chunks: T[][] = []
-  for (let i = 0; i < items.length; i += maxPerChunk) {
-    chunks.push(items.slice(i, i + maxPerChunk))
+  let remainingItems = [...items]
+  
+  while (remainingItems.length > 0) {
+    // If we have exactly maxPerChunk + 1 items left, split them as 2 chunks to avoid widow
+    if (remainingItems.length === maxPerChunk + 1) {
+      const midpoint = Math.ceil(remainingItems.length / 2)
+      chunks.push(remainingItems.slice(0, midpoint))
+      chunks.push(remainingItems.slice(midpoint))
+      break
+    }
+    // Otherwise, take maxPerChunk items
+    else {
+      chunks.push(remainingItems.slice(0, maxPerChunk))
+      remainingItems = remainingItems.slice(maxPerChunk)
+    }
   }
+  
   return chunks
 }
 
-// Generate highlight slides grouped by content type
+// Generate highlight slides combining workshops and courses
 function generateHighlightSlides(): HighlightSlide[] {
   const workshopsAndCourses = getWorkshopsAndCourses()
   
-  // Separate courses and workshops
-  const courses = workshopsAndCourses.filter(item => 
-    item.topics.some(topic => topic.toLowerCase() === 'course')
-  )
-  const workshops = workshopsAndCourses.filter(item => 
-    item.topics.some(topic => topic.toLowerCase() === 'workshop')
-  )
+  // Sort by type (workshops first, then courses) and then by date
+  const sortedItems = workshopsAndCourses.sort((a, b) => {
+    // First, sort by type (workshops before courses)
+    const aIsWorkshop = a.topics.some(topic => topic.toLowerCase() === 'workshop')
+    const bIsWorkshop = b.topics.some(topic => topic.toLowerCase() === 'workshop')
+    
+    if (aIsWorkshop && !bIsWorkshop) return -1
+    if (!aIsWorkshop && bIsWorkshop) return 1
+    
+    // If same type, sort by date
+    const aDate = new Date(a.date)
+    const bDate = new Date(b.date)
+    return aDate.getTime() - bDate.getTime()
+  })
+  
+  // Split into chunks of maximum 3 items
+  const chunks = chunkItems(sortedItems, 3)
   
   const slides: HighlightSlide[] = []
   let eventIdCounter = 1
   
-  // Create course slides (maximum 2 items per slide)
-  if (courses.length > 0) {
-    const courseChunks = chunkItems(courses, 2)
-    courseChunks.forEach((chunk, chunkIndex) => {
-      slides.push({
-        id: `courses-slide-${chunkIndex + 1}`,
-        events: chunk.map((course) => {
-          const event = transformToHighlightEvent(course, eventIdCounter - 1)
-          eventIdCounter++
-          return event
-        })
+  // Create slides with sorted content (maximum 3 items per slide)
+  chunks.forEach((chunk, chunkIndex) => {
+    slides.push({
+      id: `highlights-slide-${chunkIndex + 1}`,
+      events: chunk.map((item) => {
+        const event = transformToHighlightEvent(item, eventIdCounter - 1)
+        eventIdCounter++
+        return event
       })
     })
-  }
-  
-  // Create workshop slides (maximum 2 items per slide)
-  if (workshops.length > 0) {
-    const workshopChunks = chunkItems(workshops, 2)
-    workshopChunks.forEach((chunk, chunkIndex) => {
-      slides.push({
-        id: `workshops-slide-${chunkIndex + 1}`,
-        events: chunk.map((workshop) => {
-          const event = transformToHighlightEvent(workshop, eventIdCounter - 1)
-          eventIdCounter++
-          return event
-        })
-      })
-    })
-  }
+  })
   
   return slides
 }

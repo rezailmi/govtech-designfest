@@ -11,6 +11,7 @@ export interface AgendaItem {
     company?: string;
   }>;
   location: string;
+  locationDetails?: string;
 }
 
 // Helper function to parse date and determine week
@@ -101,13 +102,14 @@ export const agendaItems: AgendaItem[] = [
     date: 'Jul 1, 2025',
     day: 'Tuesday',
     time: '10:30 AM',
-    title: 'Festival Opening (feat. Shiao-Yin & DCE Sau Sheong)',
+    title: 'Festival Opening (feat. DCE Sau Sheong & Shiao-Yin)',
     topics: ['Get Swag', 'In-Person', 'Keynote', 'Talk'],
     speakers: [
-      { name: 'Shiao-Yin Kuik', role: 'Executive Director', company: 'Common Ground Civic Centre' },
-      { name: 'DCE Sau Sheong', role: 'Deputy Chief Executive', company: 'GovTech Singapore' }
+      { name: 'DCE Sau Sheong', role: 'Deputy Chief Executive', company: 'GovTech Singapore' },
+      { name: 'Shiao-Yin Kuik', role: 'Executive Director', company: 'Common Ground Civic Centre' }
     ],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 10 - Level 10 (The Big Place)'
   },
   {
     week: 'week1',
@@ -117,7 +119,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Design Arcade (Lunch Provided!)',
     topics: ['Got Food', 'In-Person'],
     speakers: [{ name: 'Design Festival Team', role: 'Event Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'TBA'
   },
   {
     week: 'week1',
@@ -137,7 +140,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Fireside chat: Why isn\'t empathy enough?',
     topics: ['In-Person', 'Keynote', 'Talk'],
     speakers: [{ name: 'Keynote Speaker', role: 'Design Leader', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 10 - Level 10 (The Big Place)'
   },
   {
     week: 'week1',
@@ -169,7 +173,8 @@ export const agendaItems: AgendaItem[] = [
     speakers: [
       { name: 'Ruby Pryor', role: 'Founder', company: 'Rex' }
     ],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 30 L11 Jupiter Rooms 1+2'
   },
   {
     week: 'week1',
@@ -189,7 +194,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Ctrl + Alt + Design Workshop',
     topics: ['In-Person', 'Workshop'],
     speakers: [{ name: 'Design Festival Team', role: 'Workshop Leaders', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 10 L10 The Big Place'
   },
   {
     week: 'week2',
@@ -202,7 +208,8 @@ export const agendaItems: AgendaItem[] = [
       { name: '2PS Augustin', role: 'Speaker', company: 'GovTech Singapore' },
       { name: 'Lillian Shieh', role: 'Speaker', company: 'GovTech Singapore' }
     ],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 10 L10 The Big Place'
   },
   {
     week: 'week2',
@@ -232,7 +239,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Data Storytelling',
     topics: ['Course', 'In-Person', 'Build Craft'],
     speakers: [{ name: 'Kontinentalist', role: 'Instructor', company: 'Kontinentalist' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 30 Jupiter Rooms 1+2'
   },
   {
     week: 'week2',
@@ -282,7 +290,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Visual Facilitation Lab',
     topics: ['Course', 'In-Person', 'Build Self', 'Build Craft'],
     speakers: [{ name: 'Art of Awakening', role: 'Instructor', company: 'Art of Awakening' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 10 L10 The Big Place'
   },
   {
     week: 'week2',
@@ -312,7 +321,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Design Your Life',
     topics: ['Got Food', 'In-Person', 'Workshop', 'Build Self'],
     speakers: [{ name: 'Design Thinking Community', role: 'Workshop Leaders', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 10 L10 The Big Place'
   },
   {
     week: 'week3',
@@ -352,7 +362,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Insights That Matter',
     topics: ['Course', 'In-Person', 'Build Craft'],
     speakers: [{ name: 'Studio Dojo', role: 'Instructor', company: 'Studio Dojo' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC30 L11 Jupiter Rooms 1+2'
   },
   {
     week: 'week3',
@@ -431,7 +442,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Learning Journey: DBS',
     topics: ['In-Person', 'Learning Journey', 'Build Craft', 'Service Design Week'],
     speakers: [{ name: 'Service Design Week', role: 'Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'DBS'
   },
   {
     week: 'week4',
@@ -451,7 +463,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Ctrl + Alt + Design Workshop',
     topics: ['In-Person', 'Workshop', 'Build Craft'],
     speakers: [{ name: 'Design Festival Team', role: 'Workshop Leaders', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 30 L11 Jupiter Rooms 1+2'
   },
   {
     week: 'week4',
@@ -471,7 +484,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Learning Journey: Mandai Wildlife Reserve',
     topics: ['In-Person', 'Learning Journey', 'Service Design Week'],
     speakers: [{ name: 'Service Design Week', role: 'Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'Mandai Wildlife Reserve'
   },
   {
     week: 'week4',
@@ -491,7 +505,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Learning Journey: IRAS',
     topics: ['In-Person', 'Learning Journey', 'Service Design Week'],
     speakers: [{ name: 'Service Design Week', role: 'Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'IRAS'
   },
   {
     week: 'week4',
@@ -501,7 +516,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Learning Journey: Hilton',
     topics: ['In-Person', 'Learning Journey', 'Service Design Week'],
     speakers: [{ name: 'Service Design Week', role: 'Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'Hilton'
   },
   {
     week: 'week5',
@@ -511,7 +527,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Behavioural Design: Where Behavioural Science Meets Creativity',
     topics: ['Course', 'In-Person', 'Build Craft'],
     speakers: [{ name: 'MakeIt Lab', role: 'Instructor', company: 'MakeIt Lab' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 30 L11 Jupiter Rooms 1+2'
   },
   {
     week: 'week5',
@@ -521,7 +538,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Inclusive Design Week - Day 1',
     topics: ['In-Person', 'Inclusive Design Week'],
     speakers: [{ name: 'Design Festival Team', role: 'Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'Enabling Village'
   },
   {
     week: 'week5',
@@ -531,7 +549,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Inclusive Design Week - Day 2',
     topics: ['In-Person', 'Inclusive Design Week'],
     speakers: [{ name: 'Design Festival Team', role: 'Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'Enabling Village'
   },
   {
     week: 'week5',
@@ -541,7 +560,8 @@ export const agendaItems: AgendaItem[] = [
     title: 'Inclusive Design Week - Day 3',
     topics: ['In-Person', 'Inclusive Design Week'],
     speakers: [{ name: 'Design Festival Team', role: 'Organizers', company: 'GovTech Singapore' }],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'Enabling Village'
   },
   {
     week: 'week5',
@@ -556,6 +576,7 @@ export const agendaItems: AgendaItem[] = [
       { name: 'Amanda', role: 'Speaker', company: 'GovTech Singapore' },
       { name: 'Joy', role: 'Speaker', company: 'GovTech Singapore' }
     ],
-    location: 'In-Person'
+    location: 'In-Person',
+    locationDetails: 'MBC 10 L10 The Big Place'
   }
 ];
