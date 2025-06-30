@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { Footer } from "@/components/navigation/footer"
+import { ModalProvider } from "@/contexts/modal-context"
+import { GlobalModals } from "@/components/global-modals"
 
 export const metadata: Metadata = {
   title: "GovTech Design Festival 2025",
@@ -15,8 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="light">
       <body className="min-h-screen bg-white font-sans antialiased">
-        {children}
-        <Footer />
+        <ModalProvider>
+          {children}
+          <Footer />
+          <GlobalModals />
+        </ModalProvider>
       </body>
     </html>
   )

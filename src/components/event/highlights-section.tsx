@@ -1,10 +1,11 @@
 "use client"
 
 import { HighlightsCarousel, HighlightsCarouselRef } from "./highlights-carousel"
-import { EventDetailModal } from "@/components/agenda/event-detail-modal"
-import { getEventDetailsByTitle, type EventDetail } from "@/data/event-details"
+import { getEventDetailsByTitle } from "@/data/event-details"
 import Image from "next/image"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useCallback } from "react"
+import { useEventDetailModal } from "@/contexts/modal-context"
+import { COLORS } from "@/lib/constants"
 
 export function HighlightsSection() {
   const carouselRef = useRef<HighlightsCarouselRef>(null)
@@ -12,41 +13,21 @@ export function HighlightsSection() {
     canGoPrev: false,
     canGoNext: true
   })
-  const [selectedEvent, setSelectedEvent] = useState<EventDetail | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { open } = useEventDetailModal()
 
   const handleViewDetails = (title: string) => {
     const eventDetail = getEventDetailsByTitle(title)
-    setSelectedEvent(eventDetail)
-    setIsModalOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
-    setSelectedEvent(null)
-  }
-
-  // Update navigation state when carousel changes
-  useEffect(() => {
-    const updateNavigationState = () => {
-      if (carouselRef.current) {
-        setNavigationState({
-          canGoPrev: carouselRef.current.canGoPrev,
-          canGoNext: carouselRef.current.canGoNext
-        })
-      }
+    if (eventDetail) {
+      open(eventDetail)
     }
-    
-    // Initial update
-    updateNavigationState()
-    
-    // Set up interval to check for changes
-    const interval = setInterval(updateNavigationState, 100)
-    
-    return () => clearInterval(interval)
+  }
+
+  // Handle navigation state changes from carousel - memoized to prevent infinite renders
+  const handleNavigationStateChange = useCallback((canGoPrev: boolean, canGoNext: boolean) => {
+    setNavigationState({ canGoPrev, canGoNext })
   }, [])
   return (
-    <section id="highlights" style={{ backgroundColor: '#080c1b' }} className="pt-24 pb-12">
+    <section id="highlights" style={{ backgroundColor: COLORS.dark }} className="pt-24 pb-12">
       <div className="px-6">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
@@ -102,13 +83,10 @@ export function HighlightsSection() {
         </div>
       </div>
       
-      <HighlightsCarousel ref={carouselRef} onViewDetails={handleViewDetails} />
-      
-      {/* Event Detail Modal */}
-      <EventDetailModal 
-        event={selectedEvent}
-        isOpen={isModalOpen}
-        onClose={closeModal}
+      <HighlightsCarousel 
+        ref={carouselRef} 
+        onViewDetails={handleViewDetails} 
+        onNavigationStateChange={handleNavigationStateChange}
       />
     </section>
   )

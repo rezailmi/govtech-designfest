@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, forwardRef, useImperativeHandle } from "react"
+import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react"
 import { highlightSlides } from "@/data/highlights"
 import { HighlightSlideComponent } from "./highlight-slide"
 
@@ -15,9 +15,10 @@ export interface HighlightsCarouselRef {
 
 interface HighlightsCarouselProps {
   onViewDetails?: (title: string) => void
+  onNavigationStateChange?: (canGoPrev: boolean, canGoNext: boolean) => void
 }
 
-export const HighlightsCarousel = forwardRef<HighlightsCarouselRef, HighlightsCarouselProps>(({ onViewDetails }, ref) => {
+export const HighlightsCarousel = forwardRef<HighlightsCarouselRef, HighlightsCarouselProps>(({ onViewDetails, onNavigationStateChange }, ref) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const totalSlides = highlightSlides.length
   
@@ -37,6 +38,13 @@ export const HighlightsCarousel = forwardRef<HighlightsCarouselRef, HighlightsCa
       setCurrentSlide(currentSlide - 1)
     }
   }
+
+  // Update navigation state when currentSlide changes
+  useEffect(() => {
+    const canGoPrev = currentSlide > 0
+    const canGoNext = currentSlide < totalSlides - 1
+    onNavigationStateChange?.(canGoPrev, canGoNext)
+  }, [currentSlide, totalSlides, onNavigationStateChange])
 
   // Expose functions to parent component
   useImperativeHandle(ref, () => ({

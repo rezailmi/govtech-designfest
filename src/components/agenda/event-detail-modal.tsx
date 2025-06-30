@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import { EventDetail } from '@/data/event-details'
 import { cn } from '@/lib/utils'
@@ -13,82 +13,143 @@ interface EventDetailModalProps {
 }
 
 export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  // Focus management
+  useEffect(() => {
+    if (isOpen && closeButtonRef.current) {
+      closeButtonRef.current.focus()
+    }
+  }, [isOpen])
+
+  // Keyboard handling
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown)
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen, onClose])
+
+  // Click outside to close
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose()
+    }
+  }
+
   if (!isOpen || !event) return null
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
+    <div 
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+      onClick={handleBackdropClick}
+    >
       <div className="fixed inset-0 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
           <div 
+            ref={modalRef}
             className="relative w-full max-w-2xl bg-[#0a0f1e] border border-gray-700 rounded-2xl shadow-2xl"
             style={{ backgroundColor: '#0a0f1e' }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="flex items-start justify-between p-6 border-b border-gray-700">
               <div className="flex-1 pr-4">
-                <h2 className="text-2xl font-bold text-white leading-tight">
+                <h2 
+                  id="modal-title"
+                  className="text-2xl font-bold text-white leading-tight"
+                >
                   {event.title}
                 </h2>
                 {event.who && (
-                  <p className="text-gray-300 mt-2 font-medium">{event.who}</p>
+                  <p className="text-gray-300 mt-2 font-medium" aria-label={`Presented by ${event.who}`}>
+                    {event.who}
+                  </p>
                 )}
               </div>
               <button
+                ref={closeButtonRef}
                 onClick={onClose}
-                className="flex-shrink-0 p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
-                aria-label="Close modal"
+                className="flex-shrink-0 p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                aria-label="Close event details modal"
               >
-                <X size={24} />
+                <X size={24} aria-hidden="true" />
               </button>
             </div>
 
             {/* Content */}
-            <div className="p-6 max-h-[70vh] overflow-y-auto">
+            <div 
+              id="modal-description"
+              className="p-6 max-h-[70vh] overflow-y-auto"
+              role="document"
+              aria-label="Event details content"
+            >
               {/* Event Info */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" aria-label="Event information">
                 {event.date && (
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Date</h4>
-                    <p className="text-white">{event.date}</p>
+                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Date</h3>
+                    <p className="text-white" aria-label={`Event date: ${event.date}`}>{event.date}</p>
                   </div>
                 )}
                 {event.time && (
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Time</h4>
-                    <p className="text-white">{event.time}</p>
+                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Time</h3>
+                    <p className="text-white" aria-label={`Event time: ${event.time}`}>{event.time}</p>
                   </div>
                 )}
                 {event.location && (
                   <div className="sm:col-span-2">
-                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Location</h4>
-                    <p className="text-white">{event.location}</p>
+                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Location</h3>
+                    <p className="text-white" aria-label={`Event location: ${event.location}`}>{event.location}</p>
                   </div>
                 )}
-              </div>
+              </section>
 
               {/* Tags */}
               {event.tags && event.tags.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Tags</h4>
-                  <div className="flex flex-wrap gap-2">
+                <section className="mb-6" aria-label="Event tags">
+                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Tags</h3>
+                  <div className="flex flex-wrap gap-2" role="list" aria-label="Event categories">
                     {event.tags.map((tag, index) => (
                       <span
                         key={index}
                         className="px-3 py-1 bg-gray-700 text-gray-200 rounded-full text-sm font-medium"
+                        role="listitem"
+                        aria-label={`Category: ${tag}`}
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                </div>
+                </section>
               )}
 
               {/* Description */}
               {event.description && (
-                <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Overview</h4>
+                <section className="mb-6" aria-label="Event overview">
+                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Overview</h3>
                   <p className="text-gray-200 leading-relaxed">{event.description}</p>
-                </div>
+                </section>
               )}
 
               {/* Synopsis */}
