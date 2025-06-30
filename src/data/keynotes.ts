@@ -79,7 +79,7 @@ export const keynotes: Keynote[] = [
       },
       {
         name: 'Lillian Shieh',
-        title: 'Director, Design',
+        title: 'Head, Design Practice',
         organization: 'GovTech Singapore',
         image: '/assets/images/speaker-lillian.png'
       }
