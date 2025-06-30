@@ -22,7 +22,7 @@ export default function MoreForYou() {
               
               <div className="space-y-2">
                 <p className="font-geist font-semibold text-xs text-black leading-4">
-                  Please look for the <span className="inline-block px-2.5 py-0.5 border border-black rounded-md text-xs font-geist font-semibold leading-4">Service Design Week</span> tag in the Agenda.
+                  Please look for the <span className="inline-block px-2.5 pt-1 pb-0.5 border border-black rounded-md text-xs font-geist font-semibold leading-4">Service Design Week</span> tag in the Agenda.
                 </p>
               </div>
             </div>
@@ -41,7 +41,7 @@ export default function MoreForYou() {
               
               <div className="space-y-2">
                 <p className="font-geist font-semibold text-xs text-black leading-4">
-                  Please look for the <span className="inline-block px-2.5 py-0.5 border border-black rounded-md text-xs font-geist font-semibold leading-4">Inclusive Design Week</span> tag in the Agenda.
+                  Please look for the <span className="inline-block px-2.5 pt-1 pb-0.5 border border-black rounded-md text-xs font-geist font-semibold leading-4">Inclusive Design Week</span> tag in the Agenda.
                 </p>
               </div>
             </div>

@@ -80,7 +80,7 @@ function EventBadge({ badge }: BadgeProps) {
   return (
     <span 
       className={`
-        px-2.5 py-0.5 rounded-md text-xs font-semibold leading-4
+        px-2.5 pt-1 pb-0.5 rounded-md text-xs font-semibold leading-4
         ${badge.variant === 'keynote' 
           ? 'bg-pink-400 text-black' 
           : 'border border-gray-400 text-gray-300 bg-transparent'

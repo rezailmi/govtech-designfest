@@ -6,11 +6,46 @@ interface KeynoteCardProps {
   onViewDetails?: (title: string) => void
 }
 
+// Badge component for reusability with theme support
+interface Badge {
+  text: string
+  variant: "keynote" | "outlined"
+  theme?: "pink" | "blue"
+}
+
+interface BadgeProps {
+  badge: Badge
+}
+
+function EventBadge({ badge }: BadgeProps) {
+  const filledBgColor = badge.theme === 'blue' ? 'bg-blue-400' : 'bg-pink-400'
+  
+  return (
+    <span 
+      className={`
+        px-2.5 pt-1 pb-0.5 rounded-md text-xs font-semibold leading-4
+        ${badge.variant === 'keynote' 
+          ? `${filledBgColor} text-black` 
+          : 'border border-black text-black bg-transparent'
+        }
+      `}
+      style={{ fontFamily: 'Geist, sans-serif' }}
+    >
+      {badge.text}
+    </span>
+  )
+}
+
 export function KeynoteCard({ keynote, onViewDetails }: KeynoteCardProps) {
-  const themeColors = {
-    pink: 'bg-[#FF4DC3]',
-    blue: 'bg-[#4D8EFF]'
-  }
+  // Convert keynote tags to badge format - first tag filled, rest outlined
+  const badges: Badge[] = keynote.tags.map((tag, index) => ({
+    text: tag,
+    variant: index === 0 ? "keynote" as const : "outlined" as const,
+    theme: keynote.theme
+  }))
+
+  // Use appropriate background color based on theme
+  const photoBgColor = keynote.theme === 'blue' ? 'bg-blue-400' : 'bg-pink-400'
 
   return (
     <div className="bg-white rounded-[44px] overflow-hidden">
@@ -19,13 +54,8 @@ export function KeynoteCard({ keynote, onViewDetails }: KeynoteCardProps) {
         <div className="flex-1 p-6 lg:p-8">
           <div className="max-w-2xl">
             <div className="flex flex-wrap gap-2 mb-6">
-              {keynote.tags.map((tag, index) => (
-                <span 
-                  key={index}
-                  className={`${themeColors[keynote.theme]} text-white px-3 py-1.5 rounded-full text-xs font-medium`}
-                >
-                  {tag}
-                </span>
+              {badges.map((badge, index) => (
+                <EventBadge key={index} badge={badge} />
               ))}
             </div>
             
@@ -83,7 +113,7 @@ export function KeynoteCard({ keynote, onViewDetails }: KeynoteCardProps) {
                 key={index}
                 className="flex flex-col items-center"
               >
-                <div className={`${themeColors[keynote.theme]} rounded-3xl mb-3`}>
+                <div className={`${photoBgColor} rounded-3xl mb-3`}>
                   <div className="w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-3xl overflow-hidden">
                     <Image
                       src={speaker.image || "/assets/images/speaker-lillian.png"}

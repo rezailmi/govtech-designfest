@@ -9,6 +9,7 @@ import { HighlightsSection } from "@/components/event/highlights-section"
 import { AgendaSection } from "@/components/agenda/agenda-section"
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { COLORS, URLS, FONTS, SPACING, FESTIVAL } from "@/lib/constants"
 
 export default function Home() {
@@ -48,7 +49,12 @@ export default function Home() {
             {/* Join Us CTA */}
             <div className="flex flex-col items-center text-center">
               {/* Join Us Illustration */}
-              <div className="mb-6 h-[280px] flex items-center justify-center">
+              <a 
+                href={URLS.slack} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mb-6 h-[280px] flex items-center justify-center hover:opacity-80 transition-opacity cursor-pointer"
+              >
                 <Image
                   src="/assets/icons/illustrations/illustration-join.png"
                   alt="Join Us"
@@ -56,7 +62,7 @@ export default function Home() {
                   height={280}
                   className="w-full h-full object-contain"
                 />
-              </div>
+              </a>
               
               <h3 className="text-white text-lg lg:text-xl font-semibold mb-6 leading-tight min-h-[3rem] flex items-center justify-center">
                 Latest announcements and updates
@@ -75,7 +81,12 @@ export default function Home() {
             {/* Save Your Spot CTA */}
             <div className="flex flex-col items-center text-center">
               {/* Save Your Spot Illustration */}
-              <div className="mb-6 h-[280px] flex items-center justify-center">
+              <a 
+                href={URLS.register} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mb-6 h-[280px] flex items-center justify-center hover:opacity-80 transition-opacity cursor-pointer"
+              >
                 <Image
                   src="/assets/icons/illustrations/illustration-register.png"
                   alt="Save your spot"
@@ -83,7 +94,7 @@ export default function Home() {
                   height={280}
                   className="w-full h-full object-contain"
                 />
-              </div>
+              </a>
               
               <h3 className="text-white text-lg lg:text-xl font-semibold mb-6 leading-tight min-h-[3rem] flex items-center justify-center">
                 Register now to attend
