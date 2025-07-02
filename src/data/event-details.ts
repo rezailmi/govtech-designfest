@@ -76,7 +76,7 @@ export const eventDetails: Record<string, EventDetail> = {
     date: "04/07/2025",
     time: "2:00 PM (GMT+8)",
     tags: ["In-Person", "Workshop ⚒️"],
-    location: "MBC 10 L10 The Big Place",
+    location: "MBC 30 L11 Jupiter",
     description: "Resetting the future - together",
     synopsis: "In this interactive 2.5-hour workshop, we'll explore where design is heading and what it means for us as designers. Through storytelling, provocations, and co-creation, we'll reflect on how our roles are changing - and build a shared vision for the future of design in a rapidly evolving world.",
     whoShouldJoin: "Designers, design enthusiasts, and anyone passionate about shaping how we work, think, and create in the years to come. You don't need to be a UXD - just bring curiosity and imagination.",

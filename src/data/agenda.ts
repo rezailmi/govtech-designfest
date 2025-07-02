@@ -198,7 +198,7 @@ export const agendaItems: AgendaItem[] = [
     topics: ['In-Person', 'Workshop'],
     speakers: [{ name: 'Design Festival Team', role: 'Workshop Leaders', company: 'GovTech Singapore' }],
     location: 'In-Person',
-    locationDetails: 'MBC 10 L10 The Big Place'
+    locationDetails: 'MBC 30 L11 Jupiter'
   },
   {
     week: 'week2',
