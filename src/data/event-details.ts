@@ -167,7 +167,7 @@ export const eventDetails: Record<string, EventDetail> = {
     meetingLink: "https://go.gov.sg/designfestival-talk12pm",
     location: "Online",
     synopsis: "This talk will be based on learning from Ontological coaching and the model of BEL (Body, Emotions, Language). Understanding the center of these elements and how they interact to shape the kind of observer we are is very helpful for us to expand our capacity to learn, understand others, build relationship s and achieve results.",
-    speakerBio: "**About Sarah Xu**\n\nSarah is an Industrial/Organisational Psychologist currently in the role of Organisation Development Partner at GovTech supporting the organisation's transformation efforts.\n\nPrior to this, she spent 10+ years in People Analytics and some time in user experience for talent platforms in the private sector.\n\n**About Low Jin Wei**\n\nLow Jin Wei is a HR practitioner and coach guided by the north star to optimise people performance at organisational and individual level. The 3 key pillars of her professional career include: (1) HR, where she designs and implements people strategies to create high performing organisations; (2) Coaching, where she facilitates meaningful conversations for high-performing individuals to help them uncover clarity in a world where change is the only constant; and (3) Body-mind fitness, where she coaches individuals to embody a healthy body and mind necessary for high performance through her years of training as a physical fitness and yoga coach."
+    speakerBio: "About Sarah Xu\n\nSarah is an Industrial/Organisational Psychologist currently in the role of Organisation Development Partner at GovTech supporting the organisation's transformation efforts.\n\nPrior to this, she spent 10+ years in People Analytics and some time in user experience for talent platforms in the private sector.\n\n\nAbout Low Jin Wei\n\nLow Jin Wei is a HR practitioner and coach guided by the north star to optimise people performance at organisational and individual level. The 3 key pillars of her professional career include: (1) HR, where she designs and implements people strategies to create high performing organisations; (2) Coaching, where she facilitates meaningful conversations for high-performing individuals to help them uncover clarity in a world where change is the only constant; and (3) Body-mind fitness, where she coaches individuals to embody a healthy body and mind necessary for high performance through her years of training as a physical fitness and yoga coach."
   },
   "Fireside chat: Why isn't empathy enough?": {
     id: "fireside-chat-why-isnt-empathy-enough",
@@ -457,7 +457,7 @@ Some of the topics that will be covered include:
     date: "23/07/2025",
     time: "12:00 PM (GMT+8)",
     tags: ["12 PM", "🎙️ Talk", "💻 Online", "🔨 Build Craft", "🔹 Service Design Week"],
-    description: "[MOM] Reimagining Migrant Worker Dormitories for Well-Being and Resilience\n\n[MSF] Clarity Amongst Chaos: Harmonising Social Services\n\n[SLA] Journey to the West – Insights into the Vendor's Software Development Process\n\n**GovTechies sharing SD Experience from Industry**\n\n[NINJA VAN] Design Is Always About: The Humans Using It"
+    description: "[MOM] Reimagining Migrant Worker Dormitories for Well-Being and Resilience\n\n[MSF] Clarity Amongst Chaos: Harmonising Social Services\n\n[SLA] Journey to the West – Insights into the Vendor's Software Development Process\n\nGovTechies sharing SD Experience from Industry\n\n[NINJA VAN] Design Is Always About: The Humans Using It"
   },
   "Lightning Talks: Citizen Track": {
     id: "lightning-talks-citizen-track",
@@ -466,7 +466,7 @@ Some of the topics that will be covered include:
     date: "24/07/2025",
     time: "12:00 PM (GMT+8)",
     tags: ["12 PM", "🎙️ Talk", "💻 Online", "🔨 Build Craft", "🔹 Service Design Week"],
-    description: "[MND] Hacking an inclusive chatbot for everyday Singaporeans\n\n[SPORTSG] Team Singapore's Service Journey: Supporting Athletes, Coaches and the Sports Eco-system\n\n[HTX] Helping Ah Gong and Ah Ma Drive On:\n\nA Licence Renewal Story\n\n**GovTechies sharing SD Experience from Industry**\n\n[Insurance] From Weeks to Days: Streamlining Claims Lodgement for Faster Payout"
+    description: "[MND] Hacking an inclusive chatbot for everyday Singaporeans\n\n[SPORTSG] Team Singapore's Service Journey: Supporting Athletes, Coaches and the Sports Eco-system\n\n[HTX] Helping Ah Gong and Ah Ma Drive On:\n\nA Licence Renewal Story\n\nGovTechies sharing SD Experience from Industry\n\n[Insurance] From Weeks to Days: Streamlining Claims Lodgement for Faster Payout"
   },
   "Lightning Talks: Public Officer Track": {
     id: "lightning-talks-public-officer-track",
@@ -475,7 +475,7 @@ Some of the topics that will be covered include:
     date: "22/07/2025",
     time: "12:00 PM (GMT+8)",
     tags: ["12 PM", "🎙️ Talk", "💻 Online", "🔨 Build Craft", "🔹 Service Design Week"],
-    description: "[MOE] From Insight to Impact: Revealing the Hidden Struggles of Teachers\n\n[MDDI] Divide and Design: 'Translating' a complex process into actionable solutions\n\n[GovTech] Empathy in Action: Design Sprint for a better Workspace Experience\n\n**GovTechies sharing SD Experience from Industry**\n\n[Tan Tock Seng Hospital] Redefining Inpatient Experience for Service Excellence"
+    description: "[MOE] From Insight to Impact: Revealing the Hidden Struggles of Teachers\n\n[MDDI] Divide and Design: 'Translating' a complex process into actionable solutions\n\n[GovTech] Empathy in Action: Design Sprint for a better Workspace Experience\n\nGovTechies sharing SD Experience from Industry\n\n[Tan Tock Seng Hospital] Redefining Inpatient Experience for Service Excellence"
   },
   "Measuring design value with a numbers prototype": {
     id: "measuring-design-value-with-a-numbers-prototype",
