@@ -160,14 +160,14 @@ export const eventDetails: Record<string, EventDetail> = {
   "Find my center- how our body, emotions & language shape the observer we are": {
     id: "find-my-center--how-our-body-emotions--language-shape-the-observer-we-are",
     title: "Find my center- how our body, emotions & language shape the observer we are",
-    who: "Sarah Xu",
+    who: "Sarah Xu, Low Jin Wei",
     date: "17/07/2025",
     time: "12:00 PM (GMT+8)",
     tags: ["12 PM", "🌱 Build Self", "🎙️ Talk", "💻 Online"],
     meetingLink: "https://go.gov.sg/designfestival-talk12pm",
     location: "Online",
     synopsis: "This talk will be based on learning from Ontological coaching and the model of BEL (Body, Emotions, Language). Understanding the center of these elements and how they interact to shape the kind of observer we are is very helpful for us to expand our capacity to learn, understand others, build relationship s and achieve results.",
-    speakerBio: "I am an Industrial/Organisational Psychologist currently in the role of Organisation Development Partner at GovTech supporting the organisation's transformation efforts.\n\nPrior to this, I spent 10+ years in People Analytics and some time in user experience for talent platforms in the private sector."
+    speakerBio: "**About Sarah Xu**\n\nSarah is an Industrial/Organisational Psychologist currently in the role of Organisation Development Partner at GovTech supporting the organisation's transformation efforts.\n\nPrior to this, she spent 10+ years in People Analytics and some time in user experience for talent platforms in the private sector.\n\n**About Low Jin Wei**\n\nLow Jin Wei is a HR practitioner and coach guided by the north star to optimise people performance at organisational and individual level. The 3 key pillars of her professional career include: (1) HR, where she designs and implements people strategies to create high performing organisations; (2) Coaching, where she facilitates meaningful conversations for high-performing individuals to help them uncover clarity in a world where change is the only constant; and (3) Body-mind fitness, where she coaches individuals to embody a healthy body and mind necessary for high performance through her years of training as a physical fitness and yoga coach."
   },
   "Fireside chat: Why isn't empathy enough?": {
     id: "fireside-chat-why-isnt-empathy-enough",
