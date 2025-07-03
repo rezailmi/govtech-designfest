@@ -398,7 +398,10 @@ export const agendaItems: AgendaItem[] = [
     time: '12:00 PM',
     title: 'Find my center- how our body, emotions & language shape the observer we are',
     topics: ['12 PM', 'Build Self', 'Talk', 'Online'],
-    speakers: [{ name: 'Sarah Xu', role: 'Speaker', company: 'GovTech Singapore' }],
+    speakers: [
+      { name: 'Sarah Xu', role: 'Speaker', company: 'GovTech Singapore' },
+      { name: 'Low Jin Wei', role: 'Speaker', company: 'GovTech Singapore' }
+    ],
     location: 'Online'
   },
   {
