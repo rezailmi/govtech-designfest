@@ -148,7 +148,13 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               {event.description && (
                 <section className="mb-6" aria-label="Event overview">
                   <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Overview</h3>
-                  <p className="text-gray-200 leading-relaxed">{event.description}</p>
+                  <div className="text-gray-200 leading-relaxed space-y-4">
+                    {event.description.split('\n').map((paragraph, index) => (
+                      paragraph.trim() ? (
+                        <p key={index}>{paragraph.trim()}</p>
+                      ) : null
+                    ))}
+                  </div>
                 </section>
               )}
 
@@ -156,7 +162,13 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               {event.synopsis && (
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Synopsis</h4>
-                  <p className="text-gray-200 leading-relaxed">{event.synopsis}</p>
+                  <div className="text-gray-200 leading-relaxed space-y-4">
+                    {event.synopsis.split('\n').map((paragraph, index) => (
+                      paragraph.trim() ? (
+                        <p key={index}>{paragraph.trim()}</p>
+                      ) : null
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -182,7 +194,13 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               {event.whoShouldJoin && (
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Who Should Join</h4>
-                  <p className="text-gray-200 leading-relaxed">{event.whoShouldJoin}</p>
+                  <div className="text-gray-200 leading-relaxed space-y-4">
+                    {event.whoShouldJoin.split('\n').map((paragraph, index) => (
+                      paragraph.trim() ? (
+                        <p key={index}>{paragraph.trim()}</p>
+                      ) : null
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -190,7 +208,13 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               {event.whatToExpect && (
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">What to Expect</h4>
-                  <p className="text-gray-200 leading-relaxed">{event.whatToExpect}</p>
+                  <div className="text-gray-200 leading-relaxed space-y-4">
+                    {event.whatToExpect.split('\n').map((paragraph, index) => (
+                      paragraph.trim() ? (
+                        <p key={index}>{paragraph.trim()}</p>
+                      ) : null
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -213,7 +237,13 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               {event.speakerBio && (
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">About the Speaker</h4>
-                  <p className="text-gray-200 leading-relaxed">{event.speakerBio}</p>
+                  <div className="text-gray-200 leading-relaxed space-y-4">
+                    {event.speakerBio.split('\n').map((paragraph, index) => (
+                      paragraph.trim() ? (
+                        <p key={index}>{paragraph.trim()}</p>
+                      ) : null
+                    ))}
+                  </div>
                 </div>
               )}
 
