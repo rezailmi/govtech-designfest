@@ -3,13 +3,24 @@
 import React, { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import { EventDetail } from '@/data/event-details'
-import { cn } from '@/lib/utils'
+import { cn, parseMarkdownBold } from '@/lib/utils'
 import Image from 'next/image'
 
 interface EventDetailModalProps {
   event: EventDetail | null
   isOpen: boolean
   onClose: () => void
+}
+
+// Helper component to render text with markdown bold support
+function MarkdownText({ text, className }: { text: string; className?: string }) {
+  const htmlContent = parseMarkdownBold(text)
+  return (
+    <div 
+      className={className}
+      dangerouslySetInnerHTML={{ __html: htmlContent }}
+    />
+  )
 }
 
 export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalProps) {
@@ -151,7 +162,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                   <div className="text-gray-200 leading-relaxed space-y-4">
                     {event.description.split('\n').map((paragraph, index) => (
                       paragraph.trim() ? (
-                        <p key={index}>{paragraph.trim()}</p>
+                        <MarkdownText key={index} text={paragraph.trim()} />
                       ) : null
                     ))}
                   </div>
@@ -165,7 +176,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                   <div className="text-gray-200 leading-relaxed space-y-4">
                     {event.synopsis.split('\n').map((paragraph, index) => (
                       paragraph.trim() ? (
-                        <p key={index}>{paragraph.trim()}</p>
+                        <MarkdownText key={index} text={paragraph.trim()} />
                       ) : null
                     ))}
                   </div>
@@ -184,7 +195,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                   >
                     Join via SG-Teams
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
                   </a>
                 </div>
@@ -197,7 +208,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                   <div className="text-gray-200 leading-relaxed space-y-4">
                     {event.whoShouldJoin.split('\n').map((paragraph, index) => (
                       paragraph.trim() ? (
-                        <p key={index}>{paragraph.trim()}</p>
+                        <MarkdownText key={index} text={paragraph.trim()} />
                       ) : null
                     ))}
                   </div>
@@ -211,7 +222,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                   <div className="text-gray-200 leading-relaxed space-y-4">
                     {event.whatToExpect.split('\n').map((paragraph, index) => (
                       paragraph.trim() ? (
-                        <p key={index}>{paragraph.trim()}</p>
+                        <MarkdownText key={index} text={paragraph.trim()} />
                       ) : null
                     ))}
                   </div>
@@ -226,7 +237,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                     {event.keyTakeaways.map((takeaway, index) => (
                       <div key={index} className="flex items-start gap-3">
                         <div className="flex-shrink-0 w-2 h-2 bg-pink-500 rounded-full mt-2"></div>
-                        <p className="text-gray-200 leading-relaxed">{takeaway}</p>
+                        <MarkdownText text={takeaway} className="text-gray-200 leading-relaxed" />
                       </div>
                     ))}
                   </div>
@@ -240,7 +251,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                   <div className="text-gray-200 leading-relaxed space-y-4">
                     {event.speakerBio.split('\n').map((paragraph, index) => (
                       paragraph.trim() ? (
-                        <p key={index}>{paragraph.trim()}</p>
+                        <MarkdownText key={index} text={paragraph.trim()} />
                       ) : null
                     ))}
                   </div>
@@ -259,7 +270,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
                         <div className="flex-shrink-0 w-6 h-6 bg-pink-500 text-white rounded-full flex items-center justify-center text-xs font-semibold mt-0.5">
                           {index + 1}
                         </div>
-                        <p className="text-gray-200 leading-relaxed">{item}</p>
+                        <MarkdownText text={item} className="text-gray-200 leading-relaxed" />
                       </div>
                     ))}
                   </div>
@@ -270,18 +281,17 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               {event.imageUrl && (
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Event Image</h4>
-                  <div className="relative w-full h-48 bg-gray-800 rounded-lg overflow-hidden">
+                  <div className="relative rounded-lg overflow-hidden">
                     <Image
                       src={event.imageUrl}
                       alt={event.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                 </div>
               )}
-
             </div>
 
             {/* Footer */}
