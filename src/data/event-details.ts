@@ -157,9 +157,9 @@ export const eventDetails: Record<string, EventDetail> = {
     synopsis: "Culture change strategist Shiao-Yin Kuik shares her insights about making and measuring impact through her team's work in running Common Ground Civic Centre, a 9-year-long partnership with MCCY and a community of purpose-driven organisations.\n\nDCE Sau Sheong shares about his vision for GovTech's Design practice and the design community's impact in public service.",
     description: "Learn. Play. Appreciate.\n\nA vibrant, gamified mixer that celebrates the spirit of design - and the people who make it happen. Wander through playful booths where you can express gratitude, share stories, spark fresh ideas, and most of all - have fun. Come with curiosity, leave with smiles (and maybe some swag)!"
   },
-  "Find my center- how our body, emotions & language shape the observer we are": {
+  "Designing the self using a coaching mindset- How our body, emotions & language shape the observer we are": {
     id: "find-my-center--how-our-body-emotions--language-shape-the-observer-we-are",
-    title: "Find my center- how our body, emotions & language shape the observer we are",
+    title: "Designing the self using a coaching mindset- How our body, emotions & language shape the observer we are",
     who: "Sarah Xu, Low Jin Wei",
     date: "17/07/2025",
     time: "12:00 PM (GMT+8)",
