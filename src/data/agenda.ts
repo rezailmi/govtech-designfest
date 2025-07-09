@@ -396,7 +396,7 @@ export const agendaItems: AgendaItem[] = [
     date: 'Jul 17, 2025',
     day: 'Thursday',
     time: '12:00 PM',
-    title: 'Find my center- how our body, emotions & language shape the observer we are',
+    title: 'Designing the self using a coaching mindset- How our body, emotions & language shape the observer we are',
     topics: ['12 PM', 'Build Self', 'Talk', 'Online'],
     speakers: [
       { name: 'Sarah Xu', role: 'Speaker', company: 'GovTech Singapore' },
