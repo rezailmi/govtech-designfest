@@ -424,7 +424,7 @@ Some of the topics that will be covered include:
     id: "learning-journey-hilton",
     title: "Learning Journey: Hilton",
     who: "Service Design Week",
-    date: "25/07/2025",
+    date: "29/07/2025",
     time: "3:00 PM (GMT+8)",
     tags: ["In-Person", "Learning Journey 🚌", "🔹 Service Design Week"],
     location: "Hilton",

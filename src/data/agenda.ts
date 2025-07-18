@@ -515,9 +515,9 @@ export const agendaItems: AgendaItem[] = [
     locationDetails: 'IRAS'
   },
   {
-    week: 'week4',
-    date: 'Jul 25, 2025',
-    day: 'Friday',
+    week: 'week5',
+    date: 'Jul 29, 2025',
+    day: 'Tuesday',
     time: '3:00 PM',
     title: 'Learning Journey: Hilton',
     topics: ['In-Person', 'Learning Journey', 'Service Design Week'],
