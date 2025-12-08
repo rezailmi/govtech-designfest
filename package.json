@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:ts": "tsc --noEmit"
+    "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix",
+    "lint:ts": "tsc --noEmit",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.2",
@@ -29,7 +31,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^16.0.7",
+    "eslint-config-next": "^15.1.0",
     "postcss": "^8",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
